@@ -1,0 +1,342 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="BalloonTipText.Text" xml:space="preserve">
+    <value>The application will keep running in the background</value>
+  </data>
+  <data name="BalloonTipTitle.Text" xml:space="preserve">
+    <value>Ze's Spuns</value>
+  </data>
+  <data name="buttonCadastrar.Text" xml:space="preserve">
+    <value>Registration</value>
+  </data>
+  <data name="buttonCaixa.Text" xml:space="preserve">
+    <value>Cashier</value>
+  </data>
+  <data name="buttonClientes.Text" xml:space="preserve">
+    <value>Customers</value>
+  </data>
+  <data name="buttonComandas.Text" xml:space="preserve">
+    <value>Command</value>
+  </data>
+  <data name="buttonConfiguracoes.Text" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="buttonEntrar.Text" xml:space="preserve">
+    <value>Join</value>
+  </data>
+  <data name="buttonFechar.Text" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="buttonFuncionarios.Text" xml:space="preserve">
+    <value>Employees</value>
+  </data>
+  <data name="buttonImportar.Text" xml:space="preserve">
+    <value>Import</value>
+  </data>
+  <data name="buttonInicio.Text" xml:space="preserve">
+    <value>Home</value>
+  </data>
+  <data name="buttonLogin.Text" xml:space="preserve">
+    <value>Login</value>
+  </data>
+  <data name="buttonNao.Text" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="buttonProdutos.Text" xml:space="preserve">
+    <value>Products</value>
+  </data>
+  <data name="ButtonSalvar.Text" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="buttonSalvarIdioma.Text" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="buttonSim.Text" xml:space="preserve">
+    <value>Yes</value>
+  </data>
+  <data name="buttonSobre.Text" xml:space="preserve">
+    <value>About</value>
+  </data>
+  <data name="checkBoxReiniciar.Text" xml:space="preserve">
+    <value>Restart to apply the new language immediately</value>
+  </data>
+  <data name="formClientes.Text" xml:space="preserve">
+    <value>Customers</value>
+  </data>
+  <data name="formComandas.Text" xml:space="preserve">
+    <value>Commands</value>
+  </data>
+  <data name="formConfiguracoes.Text" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="formFuncionarios.Text" xml:space="preserve">
+    <value>Employees</value>
+  </data>
+  <data name="formInicio.Text" xml:space="preserve">
+    <value>Ze's Spuns</value>
+  </data>
+  <data name="formLogin.Text" xml:space="preserve">
+    <value>Login</value>
+  </data>
+  <data name="formProdutos.Text" xml:space="preserve">
+    <value>Products</value>
+  </data>
+  <data name="formSobre.Text" xml:space="preserve">
+    <value>About</value>
+  </data>
+  <data name="labelCPF.Text" xml:space="preserve">
+    <value>ID</value>
+  </data>
+  <data name="labelDescricao.Text" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="labelDesejaSair.Text" xml:space="preserve">
+    <value>Wanna leave?</value>
+  </data>
+  <data name="labelDiaDoFiado.Text" xml:space="preserve">
+    <value>Spun day (0 - Days)</value>
+  </data>
+  <data name="labelFoto.Text" xml:space="preserve">
+    <value>Photo</value>
+  </data>
+  <data name="labelGrupo.Text" xml:space="preserve">
+    <value>Group</value>
+  </data>
+  <data name="labelLogin.Text" xml:space="preserve">
+    <value>Register</value>
+  </data>
+  <data name="labelMarcaFiado.Text" xml:space="preserve">
+    <value>Branded brand?</value>
+  </data>
+  <data name="labelMatricula.Text" xml:space="preserve">
+    <value>Registration</value>
+  </data>
+  <data name="labelMultaPorAtraso.Text" xml:space="preserve">
+    <value>Fine for delay ($)</value>
+  </data>
+  <data name="labelNome.Text" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="labelNovoUsuario.Text" xml:space="preserve">
+    <value>New user?</value>
+  </data>
+  <data name="labelSenha.Text" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="labelTaxaJurosDiaria.Text" xml:space="preserve">
+    <value>Daily interest rate (%)</value>
+  </data>
+  <data name="labelTelefone.Text" xml:space="preserve">
+    <value>Telephone</value>
+  </data>
+  <data name="labelTextoTemporario.Text" xml:space="preserve">
+    <value>In developtment</value>
+  </data>
+  <data name="labelValorUnitario.Text" xml:space="preserve">
+    <value>Unit value ($)</value>
+  </data>
+  <data name="MessageBox.Text" xml:space="preserve">
+    <value>Restarting application to change language</value>
+  </data>
+  <data name="radioButtonAdmin.Text" xml:space="preserve">
+    <value>Admin</value>
+  </data>
+  <data name="radioButtonBalcao.Text" xml:space="preserve">
+    <value>Balcony</value>
+  </data>
+  <data name="radioButtonFiadoNao.Text" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="radioButtonFiadoSim.Text" xml:space="preserve">
+    <value>Yea</value>
+  </data>
+  <data name="tabPageIdiomaRegiao.Text" xml:space="preserve">
+    <value>Language/Region</value>
+  </data>
+  <data name="tabPageParametros.Text" xml:space="preserve">
+    <value>Parameters for billing</value>
+  </data>
+  <data name="textBoxCPF.PlaceholderText" xml:space="preserve">
+    <value>000-0.00-000</value>
+  </data>
+  <data name="textBoxDescricaoProduto.PlaceholderText" xml:space="preserve">
+    <value>Product's description</value>
+  </data>
+  <data name="textBoxMatricula.PlaceholderText" xml:space="preserve">
+    <value>00000000</value>
+  </data>
+  <data name="textBoxMultaPorAtraso.PlaceholderText" xml:space="preserve">
+    <value>$</value>
+  </data>
+  <data name="textBoxNome.PlaceholderText" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="textBoxNomeFuncionario.PlaceholderText" xml:space="preserve">
+    <value>Employee name</value>
+  </data>
+  <data name="textBoxNomeProduto.PlaceholderText" xml:space="preserve">
+    <value>Product's name</value>
+  </data>
+  <data name="textBoxSenha.PlaceholderText" xml:space="preserve">
+    <value>******</value>
+  </data>
+  <data name="textBoxTaxaJurosDiaria.PlaceholderText" xml:space="preserve">
+    <value>%</value>
+  </data>
+  <data name="textBoxTelefone.PlaceholderText" xml:space="preserve">
+    <value>(00) 0 0000 0000</value>
+  </data>
+  <data name="textBoxValorUnitario.PlaceholderText" xml:space="preserve">
+    <value>$</value>
+  </data>
+  <data name="toolStripMenuItemClientes.Text" xml:space="preserve">
+    <value>Clients</value>
+  </data>
+  <data name="toolStripMenuItemConfiguracoes.Text" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="toolStripMenuItemFuncionarios.Text" xml:space="preserve">
+    <value>Employees</value>
+  </data>
+  <data name="toolStripMenuItemInicio.Text" xml:space="preserve">
+    <value>Home</value>
+  </data>
+  <data name="toolStripMenuItemLogin.Text" xml:space="preserve">
+    <value>Login</value>
+  </data>
+  <data name="toolStripMenuItemProdutos.Text" xml:space="preserve">
+    <value>Products</value>
+  </data>
+  <data name="toolStripMenuItemSair.Text" xml:space="preserve">
+    <value>Exit</value>
+  </data>
+  <data name="toolStripMenuItemSobre.Text" xml:space="preserve">
+    <value>About</value>
+  </data>
+  <data name="toolStripMenuItemSystemTrayAbrir.Text" xml:space="preserve">
+    <value>Open</value>
+  </data>
+  <data name="toolStripMenuItemSystemTraySair.Text" xml:space="preserve">
+    <value>Exit</value>
+  </data>
+  <data name="toolStripMenuItemSystemTraySobre.Text" xml:space="preserve">
+    <value>About</value>
+  </data>
+</root>

@@ -1,0 +1,176 @@
+﻿<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="labelNome.Size" type="System.Drawing.Size, System.Drawing">
+    <value>54, 15</value>
+  </data>
+  <data name="labelNome.Text" xml:space="preserve">
+    <value>Nombre:</value>
+  </data>
+  <data name="textBoxNome.PlaceholderText" xml:space="preserve">
+    <value>Nombre del producto</value>
+  </data>
+  <data name="labelDescricao.Size" type="System.Drawing.Size, System.Drawing">
+    <value>72, 15</value>
+  </data>
+  <data name="labelDescricao.Text" xml:space="preserve">
+    <value>Descripción:</value>
+  </data>
+  <data name="textBoxDescricao.PlaceholderText" xml:space="preserve">
+    <value>Descripción del producto</value>
+  </data>
+  <data name="labelValorUnitario.Size" type="System.Drawing.Size, System.Drawing">
+    <value>97, 15</value>
+  </data>
+  <data name="labelValorUnitario.Text" xml:space="preserve">
+    <value>Valor unitario ($):</value>
+  </data>
+  <data name="textBox1.PlaceholderText" xml:space="preserve">
+    <value>$</value>
+  </data>
+  <data name="labelFoto.Size" type="System.Drawing.Size, System.Drawing">
+    <value>64, 15</value>
+  </data>
+  <data name="labelFoto.Text" xml:space="preserve">
+    <value>Fotografía:</value>
+  </data>
+  <data name="ButtonCadastrar.Text" xml:space="preserve">
+    <value>Registrarse</value>
+  </data>
+  <data name="ButtonFechar.Text" xml:space="preserve">
+    <value>Cerrar</value>
+  </data>
+  <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        AAABAAEAICAAAAEAIACoEAAAFgAAACgAAAAgAAAAQAAAAAEAIAAAAAAAABAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///8Q////UP//
+        /2D///9/////cP///3D///9A////MAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///xD///9w////v///
+        ////////////////////////////////////////////v////3////8gAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///9w////////
+        /////////////////////////////////////////////////////////////////+////9/////EAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///8w////7///
+        ////////////////////////////////////////////////////////////////////////////////
+        ///////v////UAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////UP//
+        ////////////////////////////////////////////////////////////////////////////////
+        ///////////////////////v////cAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP//
+        /0D/////////////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////cAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAD///8w////////////////////////////////////////////////////////////////////////
+        ///////////////////////////////////////////////////////v////UAAAAAAAAAAAAAAAAAAA
+        AAAAAAAA////EP///9////////////////////////////////////////////////////+vAAAAAAAA
+        AAAAAAAAAAAAAP///4/////////////////////////////////////////////////////v////EAAA
+        AAAAAAAAAAAAAAAAAAD///9/////////////////////////////////////////////////////////
+        /38AAAAAAAAAAAAAAAAAAAAA////f///////////////////////////////////////////////////
+        //////9/AAAAAAAAAAAAAAAA////EP//////////////////////////////////////////////////
+        ////////////fwAAAAAAAAAAAAAAAAAAAAD///9/////////////////////////////////////////
+        /////////////////+////8gAAAAAAAAAAD///9g////////////////////////////////////////
+        //////////////////////9/AAAAAAAAAAAAAAAAAAAAAP///3//////////////////////////////
+        /////////////////////////////////38AAAAAAAAAAP///7//////////////////////////////
+        /////////////////////////////////38AAAAAAAAAAAAAAAAAAAAA////f///////////////////
+        ////////////////////////////////////////////zwAAAAD///8Q////////////////////////
+        ////////////////////////////////////////////fwAAAAAAAAAAAAAAAAAAAAD///9/////////
+        ////////////////////////////////////////////////////////////IP///0D/////////////
+        //////////////////////+f////f////3////9/////f////3////9AAAAAAAAAAAAAAAAAAAAAAP//
+        /0D///9/////f////3////9/////f////5////////////////////////////////////9Q////UP//
+        /////////////////////////////wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP//////////////////////////////////
+        /2D///9w////////////////////////////////AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////////////////////////
+        ////////////f////3D///////////////////////////////8AAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD/////////////
+        //////////////////////9w////YP///////////////////////////////////xAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP//
+        /////////////////////////////////3D///8w////////////////////////////////////v///
+        /3////9/////f////3////9/////QAAAAAAAAAAAAAAAAAAAAAD///9A////f////3////9/////f///
+        /3////+v////////////////////////////////////QP///xD////v////////////////////////
+        //////////////////////////////////////9/AAAAAAAAAAAAAAAAAAAAAP///3//////////////
+        //////////////////////////////////////////////////////8gAAAAAP///6//////////////
+        /////////////////////////////////////////////////38AAAAAAAAAAAAAAAAAAAAA////f///
+        ////////////////////////////////////////////////////////////zwAAAAAAAAAA////cP//
+        ////////////////////////////////////////////////////////////fwAAAAAAAAAAAAAAAAAA
+        AAD///9///////////////////////////////////////////////////////////////9wAAAAAAAA
+        AAD///8Q////7/////////////////////////////////////////////////////////9/AAAAAAAA
+        AAAAAAAAAAAAAP///3//////////////////////////////////////////////////////////7///
+        /yAAAAAAAAAAAAAAAAD///9/////////////////////////////////////////////////////////
+        /38AAAAAAAAAAAAAAAAAAAAA////f///////////////////////////////////////////////////
+        //////9/AAAAAAAAAAAAAAAAAAAAAP///xD////P////////////////////////////////////////
+        ////////////r////xAAAAAAAAAAAAAAAAD///+v////////////////////////////////////////
+        ////////////7wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///zD////v////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////
+        //////////////////////8wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///2D////v////////
+        ////////////////////////////////////////////////////////////////////////////////
+        ////////////////////////////UAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP//
+        /0D////v////////////////////////////////////////////////////////////////////////
+        /////////////////////////////////1AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAP///zD////f////////////////////////////////////////////////////////
+        /////////////////////////////////+////8wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///xD///9/////7///////////////////////////////////
+        //////////////////////////////////////+PAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///8Q////cP///8/////v////////
+        /////////////////////////////////6////9wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP//
+        /xD///8w////UP///3D///9w////UP///0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAA//AP//+AAf//AAB//AAAP/gAAB/wAAAP4AAAB8ADwAPAA8ADgAPAAYAD
+        wAGAA8ABAAPAAAADwAAB//+AAf//gAH//4AA//+AAAPAAAADwACAA8ABgAPAAYADwAHAA8ADwAHAB+AA
+        AAfwAAAP+AAAH/wAAD/+AAD//4AD///wH/8=
+</value>
+  </data>
+</root>
