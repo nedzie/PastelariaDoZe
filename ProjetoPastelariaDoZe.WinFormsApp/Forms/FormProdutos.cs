@@ -33,6 +33,7 @@ namespace ProjetoPastelariaDoZe.WinFormsApp
                     if (value != null)
                     {
                         _produto = value!;
+                        textBoxID.Text = _produto!.Numero.ToString();
                         textBoxNome.Text = _produto!.Nome;
                         textBoxDescricaoProduto.Text = _produto!.Descricao;
                         textBoxValorUnitario.Text = _produto!.ValorUn.ToString();
@@ -64,12 +65,18 @@ namespace ProjetoPastelariaDoZe.WinFormsApp
             Size = new(Size.Width, Size.Height + opcoes.Size.Height);
             this.Controls.Add(opcoes);
             opcoes.buttonSalvar.Click += ButtonSalvar_Click;
+            opcoes.buttonEditar.Click += ButtonEditar_Click;
             opcoes.buttonSair.Click += ButtonSair_Click;
 
             string provider = ConfigurationManager.ConnectionStrings["BD"].ProviderName;
             string connectionString = ConfigurationManager.ConnectionStrings["BD"].ConnectionString;
 
             dao = new(provider, connectionString);
+        }
+
+        private void ButtonEditar_Click(object? sender, EventArgs e)
+        {
+            throw new NotImplementedException();
         }
 
         private void ButtonSalvar_Click(object? sender, EventArgs e)
