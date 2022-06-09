@@ -175,9 +175,7 @@ namespace ProjetoPastelariaDoZe.WinFormsApp
 
             }
             else if (FormWindowState.Normal == this.WindowState)
-            {
                 notifyIconSystemTray.Visible = false;
-            }
         }
 
         /// <summary>
@@ -280,18 +278,15 @@ namespace ProjetoPastelariaDoZe.WinFormsApp
         private void EditarProduto(Produto prod)
         {
 
-            FormProdutos produtos = new FormProdutos
+            FormProdutos telaProd = new FormProdutos
             {
                 StartPosition = FormStartPosition.CenterScreen,
                 Produto = prod
             };
 
-            //produtos.Produto = new Produto
-            //{
-            //    Numero = id
-            //};
+            telaProd.ShowDialog();
 
-            produtos.ShowDialog();
+            AtualizarTela(telaProd.dao!);
         }
         private void EditarFuncionario(int id)
         {

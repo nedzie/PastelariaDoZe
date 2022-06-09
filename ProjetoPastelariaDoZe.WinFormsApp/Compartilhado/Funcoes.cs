@@ -98,9 +98,6 @@ namespace ProjetoPastelariaDoZe.WinFormsApp.Compartilhado
             Form form = x.FindForm();
             if (e.KeyCode == Keys.Enter) // Se a tecla pressionada for 'Enter'
             {
-                //Obtém ou define um valor que indica se o evento de chave deve ser passado para o controle subjacente.
-                //true caso o evento chave não deva ser enviado ao controle; caso contrário, false
-                //com isso evitamos o som de erro toda vez que pressionamos enter em algum campo
                 e.SuppressKeyPress = true;
                 form.SelectNextControl(form.ActiveControl, !e.Shift, true, true, true);
             }
@@ -109,33 +106,20 @@ namespace ProjetoPastelariaDoZe.WinFormsApp.Compartilhado
                 form.Close(); // Feche
             }
         }
-         
+
         private static void RetornarMascaraMoeda(object sender, EventArgs e)
         {
             TextBoxBase txt = (TextBoxBase)sender;
             txt.Text = double.Parse(txt.Text).ToString("C2");
         }
-        //Função para retirar a mascara
         private static void TirarMascaraMoeda(object sender, EventArgs e)
         {
-            string moeda = ConfigurationManager.AppSettings.Get("IdiomaRegiao")!;
-            //if (moeda == "pt-BR")
-            //    moeda = "R$";
-            //if (moeda == "en-US")
-            //    moeda = "$";
-            //if (moeda == "es")
-            //    moeda = "€";
-
             TextBoxBase txt = (TextBoxBase)sender;
-            txt.Text = txt.Text.Replace(moeda, "").Trim();
+            txt.Text = txt.Text.Replace("R$", "").Trim();
         }
-        //Função para somente permitir números e virgula
         private static void ApenasValorNumericoMoeda(object sender, KeyPressEventArgs e)
         {
             TextBoxBase txt = (TextBoxBase)sender;
-
-            AplicaMascaraMoeda(txt);
-
             if (!char.IsDigit(e.KeyChar) && e.KeyChar != Convert.ToChar(Keys.Back))
             {
                 if (e.KeyChar == ',')
@@ -149,19 +133,16 @@ namespace ProjetoPastelariaDoZe.WinFormsApp.Compartilhado
             }
         }
         /// <summary>
-        /// 
+        /// /
         /// </summary>
         /// <param name="txt"></param>
         public static void AplicaMascaraMoeda(TextBoxBase txt)
         {
-            //txt.Enter +=
-            //txt.Leave += 
-            //txt.KeyPress +=
             txt.Enter += TirarMascaraMoeda!;
             txt.Leave += RetornarMascaraMoeda!;
             txt.KeyPress += ApenasValorNumericoMoeda!;
         }
-         
+
         /// <summary>
         /// Método da classe funções para criptografar a senha dos clientes
         /// </summary>

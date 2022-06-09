@@ -19,7 +19,13 @@ namespace ProjetoPastelariaDoZe.DAO
         private readonly DbProviderFactory? factory;
         private string? Provider { get; set; }
         private string? StringConexao { get; set; }
+        /// <summary>
+        /// Construtor conringa
+        /// </summary>
+        public ProdutoDAO()
+        {
 
+        }
         public ProdutoDAO(string provider, string connectionString)
         {
             Provider = provider;
@@ -35,7 +41,7 @@ namespace ProjetoPastelariaDoZe.DAO
             using var comando = factory.CreateCommand(); // Cria o comando para o BD
             comando!.Connection = conexao; // Atribui a conexão
 
-            ConfigurarParametrosProduto(produto, comando);
+            ConfigurarParametrosInserir(produto, comando);
 
             conexao.Open();
 
@@ -59,7 +65,49 @@ namespace ProjetoPastelariaDoZe.DAO
             var linhas = comando.ExecuteNonQuery();
         }
 
-        private void ConfigurarParametrosProduto(Produto produto, DbCommand comando)
+        public void EditarDBProvider(Produto produto)
+        {
+            using var conexao = factory!.CreateConnection(); // Conexão com o BD
+            conexao!.ConnectionString = StringConexao; // Informa a ConnectionString, o caminho para o BD
+            using var comando = factory.CreateCommand(); // Cria o comando para o BD
+            comando!.Connection = conexao; // Atribui a conexão
+
+            ConfigurarParametrosEditar(produto, comando);
+
+            conexao.Open();
+
+            comando.CommandText =
+                @"UPDATE TB_PRODUTO
+                        SET
+                            NOME = @NOME,
+                            DESCRICAO = @DESCRICAO,
+                            VALOR_UNITARIO = @VALORUN,
+                            FOTO = @FOTO
+                        WHERE
+                            ID_PRODUTO = @IDPRODUTO";
+
+            var linhas = comando.ExecuteNonQuery();
+        }
+
+        public void ExcluirDBProvider(Produto produto)
+        {
+            using var conexao = factory!.CreateConnection(); // Conexão com o BD
+            conexao!.ConnectionString = StringConexao; // Informa a ConnectionString, o caminho para o BD
+            using var comando = factory.CreateCommand(); // Cria o comando para o BD
+            comando!.Connection = conexao; // Atribui a conexão
+
+            ConfigurarParametrosExcluir(produto, comando);
+
+            conexao.Open();
+
+            comando.CommandText =
+                @"DELETE 
+                    FROM TB_PRODUTO
+                    WHERE ID_PRODUTO = @IDPRODUTO";
+            var linhas = comando.ExecuteNonQuery();
+        }
+
+        private void ConfigurarParametrosInserir(Produto produto, DbCommand comando)
         {
             var nome = comando.CreateParameter();
             nome.ParameterName = "@NOME";
@@ -80,6 +128,42 @@ namespace ProjetoPastelariaDoZe.DAO
             foto.ParameterName = "@FOTO";
             foto.Value = produto.Foto;
             comando.Parameters.Add(foto);
+        }
+
+        private void ConfigurarParametrosEditar(Produto produto, DbCommand comando)
+        {
+            var id = comando.CreateParameter();
+            id.ParameterName = "@IDPRODUTO";
+            id.Value = produto.Numero;
+            comando.Parameters.Add(id);
+
+            var nome = comando.CreateParameter();
+            nome.ParameterName = "@NOME";
+            nome.Value = produto.Nome;
+            comando.Parameters.Add(nome);
+
+            var descricao = comando.CreateParameter();
+            descricao.ParameterName = "@DESCRICAO";
+            descricao.Value = string.IsNullOrEmpty(produto.Descricao) ? DBNull.Value : produto.Descricao;
+            comando.Parameters.Add(descricao);
+
+            var valorUn = comando.CreateParameter();
+            valorUn.ParameterName = "@VALORUN";
+            valorUn.Value = produto.ValorUn;
+            comando.Parameters.Add(valorUn);
+
+            var foto = comando.CreateParameter();
+            foto.ParameterName = "@FOTO";
+            foto.Value = produto.Foto;
+            comando.Parameters.Add(foto);
+        }
+
+        private void ConfigurarParametrosExcluir(Produto produto, DbCommand comando)
+        {
+            var id = comando.CreateParameter();
+            id.ParameterName = "@IDPRODUTO";
+            id.Value = produto.Numero;
+            comando.Parameters.Add(id);
         }
 
         public override DataTable SelectDBProvider(object produto)

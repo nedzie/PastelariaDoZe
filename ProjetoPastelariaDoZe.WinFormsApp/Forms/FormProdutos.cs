@@ -3,7 +3,6 @@ using ProjetoPastelariaDoZe.DAO;
 using ProjetoPastelariaDoZe.WinFormsApp.Compartilhado;
 using ProjetoPastelariaDoZe.WinFormsApp.Validadores.ModuloProduto;
 using System.Configuration;
-using System.Data;
 
 namespace ProjetoPastelariaDoZe.WinFormsApp
 {
@@ -28,7 +27,7 @@ namespace ProjetoPastelariaDoZe.WinFormsApp
             {
                 try
                 {
-                    
+
 
                     if (value != null)
                     {
@@ -63,9 +62,12 @@ namespace ProjetoPastelariaDoZe.WinFormsApp
                 Dock = DockStyle.Bottom
             };
             Size = new(Size.Width, Size.Height + opcoes.Size.Height);
+
+            Funcoes.AplicaMascaraMoeda(textBoxValorUnitario);
             this.Controls.Add(opcoes);
             opcoes.buttonSalvar.Click += ButtonSalvar_Click;
             opcoes.buttonEditar.Click += ButtonEditar_Click;
+            opcoes.buttonExcluir.Click += ButtonExcluir_Click;
             opcoes.buttonSair.Click += ButtonSair_Click;
 
             string provider = ConfigurationManager.ConnectionStrings["BD"].ProviderName;
@@ -74,16 +76,11 @@ namespace ProjetoPastelariaDoZe.WinFormsApp
             dao = new(provider, connectionString);
         }
 
-        private void ButtonEditar_Click(object? sender, EventArgs e)
-        {
-            throw new NotImplementedException();
-        }
-
         private void ButtonSalvar_Click(object? sender, EventArgs e)
         {
             Produto produto = new();
 
-            ConfigurarParametrosProduto(produto);
+            ConfigurarParametrosInsercao(produto);
 
             ValidadorProduto vp = new();
 
@@ -107,15 +104,87 @@ namespace ProjetoPastelariaDoZe.WinFormsApp
             }
         }
 
-        private void ConfigurarParametrosProduto(Produto produto)
+        private void ButtonEditar_Click(object? sender, EventArgs e)
+        {
+            Produto produto = new();
+
+            ConfigurarParametrosEdicao(produto);
+
+            ValidadorProduto vp = new();
+
+            ValidationResult vr = vp.Validate(produto);
+
+            if (!vr.IsValid)
+                MessageBox.Show(vr.ToString());
+            else
+            {
+                try
+                {
+                    dao!.EditarDBProvider(produto);
+
+                    MessageBox.Show("Deu boa");
+                    Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+        }
+
+        private void ButtonExcluir_Click(object? sender, EventArgs e)
+        {
+            Produto produto = new();
+
+            ConfigurarParametrosExclusao(produto);
+
+            try
+            {
+                dao!.ExcluirDBProvider(produto);
+
+                MessageBox.Show("Excluída essa desgraça");
+                Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void ConfigurarParametrosInsercao(Produto produto)
         {
             produto.Numero = 0;
+            produto.Nome = textBoxNome.Text;
+            if (textBoxDescricaoProduto.Text != null)
+                produto.Descricao = textBoxDescricaoProduto.Text;
+            if (textBoxValorUnitario.Text != string.Empty) 
+                produto.ValorUn = Convert.ToDecimal(RemoverMascaras(textBoxValorUnitario.Text));
+
+            produto.Foto = Funcoes.ConverterImagemParaByteArray(pictureBoxImagem.Image);
+        }
+
+        private string RemoverMascaras(string text)
+        {
+            return text.Replace("R$", "").Replace("$", "").Replace("₱", "").Replace("£", "").Replace("€", "");
+        }
+
+        private void ConfigurarParametrosEdicao(Produto produto)
+        {
+            produto.Numero = Convert.ToInt32(textBoxID.Text);
             produto.Nome = textBoxNome.Text;
             if (textBoxDescricaoProduto.Text != null)
                 produto.Descricao = textBoxDescricaoProduto.Text;
             if (textBoxValorUnitario.Text != string.Empty)
                 produto.ValorUn = Convert.ToDecimal(textBoxValorUnitario.Text);
             produto.Foto = Funcoes.ConverterImagemParaByteArray(pictureBoxImagem.Image);
+        }
+        /// <summary>
+        /// ddd
+        /// </summary>
+        /// <param name="produto"></param>
+        public void ConfigurarParametrosExclusao(Produto produto)
+        {
+            produto.Numero = Convert.ToInt32(textBoxID.Text);
         }
 
         private void pictureBoxImagem_Click(object sender, EventArgs e)
