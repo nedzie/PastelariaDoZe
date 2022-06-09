@@ -23,8 +23,22 @@ namespace ProjetoPastelariaDoZe.WinFormsApp
             Funcoes.EventoFocoCampos(this);
             this.KeyDown += new KeyEventHandler(Funcoes.FormEventoKeyDown!);
             this.Text = Properties.Resources.ResourceManager.GetString("formInicio.Text");
-            MaximizeBox = false;
 
+            ConfigurarAcoesBotoes();
+
+            ComponentResourceManager resources = new(typeof(Properties.Resources));
+            foreach (ToolStripItem c in contextMenuStripInicio.Items)
+            {
+                resources.ApplyResources(c, c.Name);
+            }
+            foreach (ToolStripItem c in contextMenuStripSystemTray.Items)
+            {
+                resources.ApplyResources(c, c.Name);
+            }
+        }
+
+        private void ConfigurarAcoesBotoes()
+        {
             toolStripMenuItemLogin.Click += new EventHandler(buttonLogin_Click!);
             toolStripMenuItemFuncionarios.Click += new EventHandler(buttonFuncionarios_Click!);
             toolStripMenuItemClientes.Click += new EventHandler(buttonClientes_Click!);
@@ -38,16 +52,6 @@ namespace ProjetoPastelariaDoZe.WinFormsApp
             toolStripMenuItemSystemTraySobre.Click += new EventHandler(buttonSobre_Click!);
 
             buttonSair.Click += ToolStripMenuItemSystemTraySair_Click;
-
-            ComponentResourceManager resources = new(typeof(Properties.Resources));
-            foreach (ToolStripItem c in contextMenuStripInicio.Items)
-            {
-                resources.ApplyResources(c, c.Name);
-            }
-            foreach (ToolStripItem c in contextMenuStripSystemTray.Items)
-            {
-                resources.ApplyResources(c, c.Name);
-            }
         }
 
         private void ToolStripMenuItemSystemTraySair_Click(object? sender, EventArgs e)
