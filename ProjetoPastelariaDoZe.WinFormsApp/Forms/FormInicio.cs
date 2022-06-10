@@ -3,7 +3,6 @@ using ProjetoPastelariaDoZe.DAO.Compartilhado;
 using ProjetoPastelariaDoZe.WinFormsApp.Compartilhado;
 using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 
 namespace ProjetoPastelariaDoZe.WinFormsApp
 {
@@ -267,7 +266,7 @@ namespace ProjetoPastelariaDoZe.WinFormsApp
                     EditarFuncionario(f);
                     break;
                 case 7: // Cliente 
-                    Cliente c = new();
+                    Cliente c = RecriarClienteDaGrid(id, selectedRow);
                     EditarCliente(c);
                     break;
             }
@@ -298,9 +297,17 @@ namespace ProjetoPastelariaDoZe.WinFormsApp
             AtualizarTela(telaFunc.dao);
         }
 
-        private void EditarCliente(Cliente cliente)
+        private void EditarCliente(Cliente cli)
         {
-            throw new NotImplementedException();
+            FormCliente telaCli = new FormCliente
+            {
+                StartPosition = FormStartPosition.CenterParent,
+                Cliente = cli
+            };
+
+            telaCli.ShowDialog();
+
+            AtualizarTela(telaCli.dao);
         }
 
         private static Produto RecriarProdutoDaGrid(int id, DataGridViewRow selectedRow)
@@ -324,8 +331,42 @@ namespace ProjetoPastelariaDoZe.WinFormsApp
                 CPF = Convert.ToString(selectedRow.Cells[2].Value),
                 Telefone = Convert.ToString(selectedRow.Cells[3].Value),
                 Matricula = Convert.ToString(selectedRow.Cells[4].Value),
-                Grupo = Convert.ToInt32(selectedRow.Cells [5].Value)
+                Grupo = Convert.ToInt32(selectedRow.Cells[5].Value)
             };
+        }
+
+        private Cliente RecriarClienteDaGrid(int id, DataGridViewRow selectedRow)
+        {
+            if (selectedRow.Cells[2].Value == DBNull.Value && selectedRow.Cells[3].Value == DBNull.Value)
+            {
+                return new()
+                {
+                    Numero = id,
+                    Nome = selectedRow.Cells[1].Value.ToString()
+                };
+            }
+            if (selectedRow.Cells[2].Value == DBNull.Value)
+            {
+                return new()
+                {
+                    Numero = id,
+                    Nome = selectedRow.Cells[1].Value.ToString(),
+                    CNPJ = selectedRow.Cells[3].Value.ToString(),
+                    Telefone = selectedRow.Cells[4].Value.ToString(),
+                    MarcaFiado = Convert.ToInt32(selectedRow.Cells[5].Value),
+                    DiaDoFiado = Convert.ToInt32(selectedRow.Cells[6].Value)
+                };
+            }
+            else
+                return new()
+                {
+                    Numero = id,
+                    Nome = selectedRow.Cells[1].Value.ToString(),
+                    CPF = selectedRow.Cells[2].Value.ToString(),
+                    Telefone = selectedRow.Cells[4].Value.ToString(),
+                    MarcaFiado = Convert.ToInt32(selectedRow.Cells[5].Value),
+                    DiaDoFiado = Convert.ToInt32(selectedRow.Cells[6].Value)
+                };
         }
     }
 }

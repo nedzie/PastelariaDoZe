@@ -11,8 +11,6 @@ namespace ProjetoPastelariaDoZe.DAO
         public string? Descricao { get; set; }
         public decimal ValorUn { get; set; }
         public byte[]? Foto { get; set; }
-
-
     }
     public class ProdutoDAO : EntidadeBase
     {
@@ -32,7 +30,6 @@ namespace ProjetoPastelariaDoZe.DAO
             this.StringConexao = connectionString;
             this.factory = DbProviderFactories.GetFactory(Provider);
         }
-
 
         public void InserirDBProvider(Produto produto)
         {

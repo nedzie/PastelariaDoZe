@@ -48,6 +48,17 @@ namespace ProjetoPastelariaDoZe.WinFormsApp
             Funcoes.EventoFocoCampos(this);
             this.KeyDown += new KeyEventHandler(Funcoes.FormEventoKeyDown!);
             this.Text = Properties.Resources.ResourceManager.GetString("formFuncionarios.Text");
+
+            ConfigurarUserControl();
+
+            string provider = ConfigurationManager.ConnectionStrings["BD"].ProviderName;
+            string connectionString = ConfigurationManager.ConnectionStrings["BD"].ConnectionString;
+
+            dao = new(provider, connectionString);
+        }
+
+        private void ConfigurarUserControl()
+        {
             UserControlControleUsuarioGeral opcoes = new()
             {
                 Dock = DockStyle.Bottom
@@ -58,14 +69,8 @@ namespace ProjetoPastelariaDoZe.WinFormsApp
             opcoes.buttonEditar.Click += ButtonEditar_Click;
             opcoes.buttonExcluir.Click += ButtonExcluir_Click;
             opcoes.buttonSalvar.Click += ButtonSalvar_Click;
-
-            string provider = ConfigurationManager.ConnectionStrings["BD"].ProviderName;
-            string connectionString = ConfigurationManager.ConnectionStrings["BD"].ConnectionString;
-
-            dao = new(provider, connectionString);
         }
 
-        
         private void ButtonSalvar_Click(object? sender, EventArgs e)
         {
             Funcionario funcionario = new();

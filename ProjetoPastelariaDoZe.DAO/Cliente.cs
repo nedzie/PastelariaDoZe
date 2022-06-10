@@ -87,7 +87,7 @@ namespace ProjetoPastelariaDoZe.DAO
             using var comando = factory.CreateCommand(); // Cria o comando para o BD
             comando!.Connection = conexao; // Atribui a conexão
 
-            ConfigurarParametrosCliente(cliente, comando);
+            ConfigurarParametrosInserir(cliente, comando);
 
             conexao.Open();
 
@@ -110,9 +110,35 @@ namespace ProjetoPastelariaDoZe.DAO
                             @CNPJ,
                             @TELEFONE,
                             @SENHA,
-                            @MARCAFIADO,
-                            @DIADOFIADO
+                            @COMPRA_FIADO,
+                            @DIA_FIADO
                             )";
+
+            var linhas = comando.ExecuteNonQuery();
+        }
+
+        public void EditarDBProvider(Cliente cliente)
+        {
+            using var conexao = factory.CreateConnection(); // Conexão com o BD
+            conexao!.ConnectionString = StringConexao; // Informa a ConnectionString, o caminho para o BD
+            using var comando = factory.CreateCommand(); // Cria o comando para o BD
+            comando!.Connection = conexao; // Atribui a conexão
+
+            ConfigurarParametrosEditar(cliente, comando);
+
+            conexao.Open();
+
+            comando.CommandText =
+                @"UPDATE TB_CLIENTE
+                    SET
+                        NOME = @NOME,
+                        CPF = @CPF,
+                        CNPJ = @CNPJ,
+                        TELEFONE = @TELEFONE,
+                        COMPRA_FIADO = @COMPRA_FIADO,
+                        DIA_FIADO = @DIA_FIADO
+                    WHERE 
+                        ID_CLIENTE = @IDCLIENTE";
 
             var linhas = comando.ExecuteNonQuery();
         }
@@ -154,7 +180,7 @@ namespace ProjetoPastelariaDoZe.DAO
             return linhas;
         }
 
-        private void ConfigurarParametrosCliente(Cliente cliente, DbCommand comando)
+        private void ConfigurarParametrosInserir(Cliente cliente, DbCommand comando)
         {
             var nome = comando.CreateParameter();
             nome.ParameterName = "@NOME";
@@ -182,17 +208,51 @@ namespace ProjetoPastelariaDoZe.DAO
             comando.Parameters.Add(senha);
 
             var marcaFiado = comando.CreateParameter();
-            marcaFiado.ParameterName = "MARCAFIADO";
+            marcaFiado.ParameterName = "@COMPRA_FIADO";
             marcaFiado.Value = cliente.MarcaFiado;
             comando.Parameters.Add(marcaFiado);
 
             var diaDoFiado = comando.CreateParameter();
-            diaDoFiado.ParameterName = "@DIADOFIADO";
-            if (cliente.MarcaFiado == 0)
-                diaDoFiado.Value = DBNull.Value;
-            else
-                diaDoFiado.Value = cliente.DiaDoFiado;
+            diaDoFiado.ParameterName = "@DIA_FIADO";
+            diaDoFiado.Value = cliente.MarcaFiado == 0 ? DBNull.Value : cliente.DiaDoFiado;
+            comando.Parameters.Add(diaDoFiado);
+        }
 
+        private void ConfigurarParametrosEditar(Cliente cliente, DbCommand comando)
+        {
+            var id = comando.CreateParameter();
+            id.ParameterName = "@IDCLIENTE";
+            id.Value = cliente.Numero;
+            comando.Parameters.Add(id);
+
+            var nome = comando.CreateParameter();
+            nome.ParameterName = "@NOME";
+            nome.Value = cliente.Nome;
+            comando.Parameters.Add(nome);
+
+            var cpf = comando.CreateParameter();
+            cpf.ParameterName = "@CPF";
+            cpf.Value = string.IsNullOrEmpty(cliente.CPF) ? DBNull.Value : cliente.CPF;
+            comando.Parameters.Add(cpf);
+
+            var cnpj = comando.CreateParameter();
+            cnpj.ParameterName = "@CNPJ";
+            cnpj.Value = string.IsNullOrEmpty(cliente.CNPJ) ? DBNull.Value : cliente.CNPJ;
+            comando.Parameters.Add(cnpj);
+
+            var telefone = comando.CreateParameter();
+            telefone.ParameterName = "@TELEFONE";
+            telefone.Value = string.IsNullOrEmpty(cliente.Telefone) ? DBNull.Value : cliente.Telefone;
+            comando.Parameters.Add(telefone);
+
+            var marcaFiado = comando.CreateParameter();
+            marcaFiado.ParameterName = "@COMPRA_FIADO";
+            marcaFiado.Value = cliente.MarcaFiado;
+            comando.Parameters.Add(marcaFiado);
+
+            var diaDoFiado = comando.CreateParameter();
+            diaDoFiado.ParameterName = "@DIA_FIADO";
+            diaDoFiado.Value = cliente.MarcaFiado == 0 ? DBNull.Value : cliente.DiaDoFiado;
             comando.Parameters.Add(diaDoFiado);
         }
     }

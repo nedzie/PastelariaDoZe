@@ -109,7 +109,7 @@
             // 
             this.labelFoto.AutoSize = true;
             this.labelFoto.ForeColor = System.Drawing.Color.White;
-            this.labelFoto.Location = new System.Drawing.Point(338, 12);
+            this.labelFoto.Location = new System.Drawing.Point(314, 0);
             this.labelFoto.Name = "labelFoto";
             this.labelFoto.Size = new System.Drawing.Size(34, 15);
             this.labelFoto.TabIndex = 6;
@@ -122,7 +122,7 @@
             this.pictureBoxImagem.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBoxImagem.ErrorImage = global::ProjetoPastelariaDoZe.WinFormsApp.Properties.Resources.null1;
             this.pictureBoxImagem.InitialImage = global::ProjetoPastelariaDoZe.WinFormsApp.Properties.Resources.addNew;
-            this.pictureBoxImagem.Location = new System.Drawing.Point(342, 30);
+            this.pictureBoxImagem.Location = new System.Drawing.Point(318, 18);
             this.pictureBoxImagem.Name = "pictureBoxImagem";
             this.pictureBoxImagem.Size = new System.Drawing.Size(138, 107);
             this.pictureBoxImagem.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -145,7 +145,7 @@
             this.panelProdutos.Controls.Add(this.labelNome);
             this.panelProdutos.Location = new System.Drawing.Point(12, 12);
             this.panelProdutos.Name = "panelProdutos";
-            this.panelProdutos.Size = new System.Drawing.Size(490, 230);
+            this.panelProdutos.Size = new System.Drawing.Size(465, 203);
             this.panelProdutos.TabIndex = 11;
             // 
             // textBoxID
@@ -178,7 +178,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
-            this.ClientSize = new System.Drawing.Size(512, 248);
+            this.ClientSize = new System.Drawing.Size(487, 221);
             this.Controls.Add(this.panelProdutos);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));

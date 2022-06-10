@@ -54,6 +54,17 @@ namespace ProjetoPastelariaDoZe.WinFormsApp
             Funcoes.EventoFocoCampos(this);
             this.KeyDown += new KeyEventHandler(Funcoes.FormEventoKeyDown!);
             this.Text = Properties.Resources.ResourceManager.GetString("formProdutos.Text");
+
+            ConfigurarUserControl();
+
+            string provider = ConfigurationManager.ConnectionStrings["BD"].ProviderName;
+            string connectionString = ConfigurationManager.ConnectionStrings["BD"].ConnectionString;
+
+            dao = new(provider, connectionString);
+        }
+
+        private void ConfigurarUserControl()
+        {
             UserControlControleUsuarioGeral opcoes = new()
             {
                 Dock = DockStyle.Bottom
@@ -66,11 +77,6 @@ namespace ProjetoPastelariaDoZe.WinFormsApp
             opcoes.buttonEditar.Click += ButtonEditar_Click;
             opcoes.buttonExcluir.Click += ButtonExcluir_Click;
             opcoes.buttonSair.Click += ButtonSair_Click;
-
-            string provider = ConfigurationManager.ConnectionStrings["BD"].ProviderName;
-            string connectionString = ConfigurationManager.ConnectionStrings["BD"].ConnectionString;
-
-            dao = new(provider, connectionString);
         }
 
         private void ButtonSalvar_Click(object? sender, EventArgs e)
