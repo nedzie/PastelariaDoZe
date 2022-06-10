@@ -78,7 +78,7 @@ namespace ProjetoPastelariaDoZe.DAO
             using var comando = factory.CreateCommand(); // Cria o comando para o BD
             comando!.Connection = conexao; // Atribui a conexão
 
-            ConfigurarParametrosFuncionario(funcionario, comando);
+            ConfigurarParametrosInserir(funcionario, comando);
 
             conexao.Open();
 
@@ -166,6 +166,56 @@ namespace ProjetoPastelariaDoZe.DAO
 
             var linhas = comando.ExecuteNonQuery();
         }
+        public void ExcluirDBProvider(Funcionario funcionario)
+        {
+            using var conexao = factory!.CreateConnection(); // Conexão com o BD
+            conexao!.ConnectionString = StringConexao; // Informa a ConnectionString, o caminho para o BD
+            using var comando = factory.CreateCommand(); // Cria o comando para o BD
+            comando!.Connection = conexao; // Atribui a conexão
+
+            ConfigurarParametrosExcluir(funcionario, comando);
+
+            conexao.Open();
+
+            comando.CommandText =
+                @"DELETE 
+                    FROM TB_FUNCIONARIO
+                    WHERE ID_FUNCIONARIO = @IDFUNCIONARIO";
+            var linhas = comando.ExecuteNonQuery();
+        }
+
+        private static void ConfigurarParametrosInserir(Funcionario funcionario, DbCommand comando)
+        {
+            var nome = comando.CreateParameter();
+            nome.ParameterName = "@NOME";
+            nome.Value = funcionario.Nome;
+            comando.Parameters.Add(nome);
+
+            var cpf = comando.CreateParameter();
+            cpf.ParameterName = "@CPF";
+            cpf.Value = funcionario.CPF;
+            comando.Parameters.Add(cpf);
+
+            var telefone = comando.CreateParameter();
+            telefone.ParameterName = "@TELEFONE";
+            telefone.Value = funcionario.Telefone;
+            comando.Parameters.Add(telefone);
+
+            var matricula = comando.CreateParameter();
+            matricula.ParameterName = "@MATRICULA";
+            matricula.Value = funcionario.Matricula;
+            comando.Parameters.Add(matricula);
+
+            var senha = comando.CreateParameter();
+            senha.ParameterName = "@SENHA";
+            senha.Value = funcionario.Senha;
+            comando.Parameters.Add(senha);
+
+            var grupo = comando.CreateParameter();
+            grupo.ParameterName = "@GRUPO";
+            grupo.Value = funcionario.Grupo;
+            comando.Parameters.Add(grupo);
+        }
 
         private void ConfigurarParametrosEditar(Funcionario funcionario, DbCommand comando)
         {
@@ -200,37 +250,12 @@ namespace ProjetoPastelariaDoZe.DAO
             comando.Parameters.Add(grupo);
         }
 
-        private static void ConfigurarParametrosFuncionario(Funcionario funcionario, DbCommand comando)
+        private void ConfigurarParametrosExcluir(Funcionario funcionario, DbCommand comando)
         {
-            var nome = comando.CreateParameter();
-            nome.ParameterName = "@NOME";
-            nome.Value = funcionario.Nome;
-            comando.Parameters.Add(nome);
-
-            var cpf = comando.CreateParameter();
-            cpf.ParameterName = "@CPF";
-            cpf.Value = funcionario.CPF;
-            comando.Parameters.Add(cpf);
-
-            var telefone = comando.CreateParameter();
-            telefone.ParameterName = "@TELEFONE";
-            telefone.Value = funcionario.Telefone;
-            comando.Parameters.Add(telefone);
-
-            var matricula = comando.CreateParameter();
-            matricula.ParameterName = "@MATRICULA";
-            matricula.Value = funcionario.Matricula;
-            comando.Parameters.Add(matricula);
-
-            var senha = comando.CreateParameter();
-            senha.ParameterName = "@SENHA";
-            senha.Value = funcionario.Senha;
-            comando.Parameters.Add(senha);
-
-            var grupo = comando.CreateParameter();
-            grupo.ParameterName = "@GRUPO";
-            grupo.Value = funcionario.Grupo;
-            comando.Parameters.Add(grupo);
+            var id = comando.CreateParameter();
+            id.ParameterName = "@IDFUNCIONARIO";
+            id.Value = funcionario.Numero;
+            comando.Parameters.Add(id);
         }
     }
 }

@@ -56,6 +56,7 @@ namespace ProjetoPastelariaDoZe.WinFormsApp
             this.Controls.Add(opcoes);
             opcoes.buttonSair.Click += ButtonSair_Click;
             opcoes.buttonEditar.Click += ButtonEditar_Click;
+            opcoes.buttonExcluir.Click += ButtonExcluir_Click;
             opcoes.buttonSalvar.Click += ButtonSalvar_Click;
 
             string provider = ConfigurationManager.ConnectionStrings["BD"].ProviderName;
@@ -65,12 +66,11 @@ namespace ProjetoPastelariaDoZe.WinFormsApp
         }
 
         
-
         private void ButtonSalvar_Click(object? sender, EventArgs e)
         {
             Funcionario funcionario = new();
 
-            ConfigurarAtributos(funcionario);
+            ConfigurarParametros(funcionario);
 
             ValidadorFuncionario vf = new();
 
@@ -98,7 +98,7 @@ namespace ProjetoPastelariaDoZe.WinFormsApp
         {
             Funcionario funcionario = new();
 
-            ConfigurarAtributos(funcionario);
+            ConfigurarParametros(funcionario);
 
             ValidadorFuncionarioEditar vf = new();
 
@@ -122,12 +122,31 @@ namespace ProjetoPastelariaDoZe.WinFormsApp
             }
         }
 
+        private void ButtonExcluir_Click(object? sender, EventArgs e)
+        {
+            Funcionario funcionario = new();
+
+            ConfigurarParametrosExcluir(funcionario);
+
+            try
+            {
+                dao!.ExcluirDBProvider(funcionario);
+
+                MessageBox.Show("Excluída essa desgraça");
+                Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
         private void ButtonSair_Click(object? sender, EventArgs e)
         {
             this.Close();
         }
 
-        private void ConfigurarAtributos(Funcionario funcionario)
+        private void ConfigurarParametros(Funcionario funcionario)
         {
             if (!string.IsNullOrEmpty(textBoxID.Text))
                 funcionario.Numero = Convert.ToInt32(textBoxID.Text);
@@ -138,6 +157,11 @@ namespace ProjetoPastelariaDoZe.WinFormsApp
             if(!string.IsNullOrEmpty(textBoxSenha.Text))
                 funcionario.Senha = Funcoes.Sha256Hash(textBoxSenha.Text);
             funcionario.Grupo = (radioButtonAdmin.Checked) ? 1 : 2; // Se .Checked == true, Grupo=1, senão, Grupo=2;
+        }
+
+        private void ConfigurarParametrosExcluir(Funcionario funcionario)
+        {
+            funcionario.Numero = Convert.ToInt32(textBoxID.Text);
         }
     }
 }
