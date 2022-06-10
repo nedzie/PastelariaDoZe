@@ -143,6 +143,32 @@ namespace ProjetoPastelariaDoZe.DAO
             var linhas = comando.ExecuteNonQuery();
         }
 
+        public void ExcluirDBProvider(Cliente cliente)
+        {
+            using var conexao = factory!.CreateConnection(); // Conexão com o BD
+            conexao!.ConnectionString = StringConexao; // Informa a ConnectionString, o caminho para o BD
+            using var comando = factory.CreateCommand(); // Cria o comando para o BD
+            comando!.Connection = conexao; // Atribui a conexão
+
+            ConfigurarParametrosExcluir(cliente, comando);
+
+            conexao.Open();
+
+            comando.CommandText =
+                @"DELETE 
+                    FROM TB_CLIENTE
+                    WHERE ID_CLIENTE = @IDCLIENTE";
+            var linhas = comando.ExecuteNonQuery();
+        }
+
+        private void ConfigurarParametrosExcluir(Cliente cliente, DbCommand comando)
+        {
+            var id = comando.CreateParameter();
+            id.ParameterName = "@IDCLIENTE";
+            id.Value = cliente.Numero;
+            comando.Parameters.Add(id);
+        }
+
         public override DataTable SelectDBProvider(object cliente)
         {
             using var conexao = factory!.CreateConnection(); // Conexão com o BD
@@ -217,6 +243,8 @@ namespace ProjetoPastelariaDoZe.DAO
             diaDoFiado.Value = cliente.MarcaFiado == 0 ? DBNull.Value : cliente.DiaDoFiado;
             comando.Parameters.Add(diaDoFiado);
         }
+
+        
 
         private void ConfigurarParametrosEditar(Cliente cliente, DbCommand comando)
         {

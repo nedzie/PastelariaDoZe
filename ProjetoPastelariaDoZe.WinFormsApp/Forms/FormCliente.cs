@@ -170,7 +170,21 @@ namespace ProjetoPastelariaDoZe.WinFormsApp
 
         private void ButtonExcluir_Click(object? sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            Cliente cliente = new();
+
+            ConfigurarParametrosExclusao(cliente);
+
+            try
+            {
+                dao!.ExcluirDBProvider(cliente);
+
+                MessageBox.Show("Excluída essa desgraça");
+                Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void ButtonSair_Click(object? sender, EventArgs e)
@@ -266,6 +280,11 @@ namespace ProjetoPastelariaDoZe.WinFormsApp
             }
             else
                 cliente.Nome = textBoxNome.Text;
+        }
+
+        private void ConfigurarParametrosExclusao(Cliente cliente)
+        {
+            cliente.Numero = Convert.ToInt32(textBoxID.Text);
         }
     }
 }
