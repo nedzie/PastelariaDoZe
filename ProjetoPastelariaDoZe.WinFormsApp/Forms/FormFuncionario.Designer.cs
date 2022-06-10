@@ -43,6 +43,8 @@
             this.labelTelefone = new System.Windows.Forms.Label();
             this.labelMatricula = new System.Windows.Forms.Label();
             this.labelCPF = new System.Windows.Forms.Label();
+            this.textBoxID = new System.Windows.Forms.TextBox();
+            this.labelID = new System.Windows.Forms.Label();
             this.PanelFuncionarios.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -50,7 +52,7 @@
             // 
             this.labelNome.AutoSize = true;
             this.labelNome.ForeColor = System.Drawing.Color.White;
-            this.labelNome.Location = new System.Drawing.Point(3, 0);
+            this.labelNome.Location = new System.Drawing.Point(3, 44);
             this.labelNome.Name = "labelNome";
             this.labelNome.Size = new System.Drawing.Size(43, 15);
             this.labelNome.TabIndex = 0;
@@ -59,6 +61,8 @@
             // PanelFuncionarios
             // 
             this.PanelFuncionarios.BackColor = System.Drawing.Color.Transparent;
+            this.PanelFuncionarios.Controls.Add(this.textBoxID);
+            this.PanelFuncionarios.Controls.Add(this.labelID);
             this.PanelFuncionarios.Controls.Add(this.maskedTextBoxTelefone);
             this.PanelFuncionarios.Controls.Add(this.maskedTextBoxCPF);
             this.PanelFuncionarios.Controls.Add(this.textBoxSenha);
@@ -74,12 +78,12 @@
             this.PanelFuncionarios.Controls.Add(this.labelNome);
             this.PanelFuncionarios.Location = new System.Drawing.Point(12, 12);
             this.PanelFuncionarios.Name = "PanelFuncionarios";
-            this.PanelFuncionarios.Size = new System.Drawing.Size(371, 334);
+            this.PanelFuncionarios.Size = new System.Drawing.Size(371, 371);
             this.PanelFuncionarios.TabIndex = 1;
             // 
             // maskedTextBoxTelefone
             // 
-            this.maskedTextBoxTelefone.Location = new System.Drawing.Point(3, 180);
+            this.maskedTextBoxTelefone.Location = new System.Drawing.Point(3, 224);
             this.maskedTextBoxTelefone.Mask = "(00) 90000-0000";
             this.maskedTextBoxTelefone.Name = "maskedTextBoxTelefone";
             this.maskedTextBoxTelefone.Size = new System.Drawing.Size(100, 23);
@@ -88,7 +92,7 @@
             // 
             // maskedTextBoxCPF
             // 
-            this.maskedTextBoxCPF.Location = new System.Drawing.Point(3, 68);
+            this.maskedTextBoxCPF.Location = new System.Drawing.Point(3, 112);
             this.maskedTextBoxCPF.Mask = "000\\.000\\.000-00";
             this.maskedTextBoxCPF.Name = "maskedTextBoxCPF";
             this.maskedTextBoxCPF.Size = new System.Drawing.Size(144, 23);
@@ -97,7 +101,7 @@
             // 
             // textBoxSenha
             // 
-            this.textBoxSenha.Location = new System.Drawing.Point(3, 224);
+            this.textBoxSenha.Location = new System.Drawing.Point(3, 268);
             this.textBoxSenha.MaxLength = 20;
             this.textBoxSenha.Name = "textBoxSenha";
             this.textBoxSenha.PasswordChar = '×';
@@ -107,7 +111,7 @@
             // 
             // textBoxMatricula
             // 
-            this.textBoxMatricula.Location = new System.Drawing.Point(3, 123);
+            this.textBoxMatricula.Location = new System.Drawing.Point(3, 167);
             this.textBoxMatricula.MaxLength = 10;
             this.textBoxMatricula.Name = "textBoxMatricula";
             this.textBoxMatricula.PlaceholderText = "000000";
@@ -118,7 +122,7 @@
             // 
             this.radioButtonBalcao.AutoSize = true;
             this.radioButtonBalcao.ForeColor = System.Drawing.Color.White;
-            this.radioButtonBalcao.Location = new System.Drawing.Point(0, 306);
+            this.radioButtonBalcao.Location = new System.Drawing.Point(0, 350);
             this.radioButtonBalcao.Name = "radioButtonBalcao";
             this.radioButtonBalcao.Size = new System.Drawing.Size(60, 19);
             this.radioButtonBalcao.TabIndex = 6;
@@ -130,7 +134,7 @@
             // 
             this.radioButtonAdmin.AutoSize = true;
             this.radioButtonAdmin.ForeColor = System.Drawing.Color.White;
-            this.radioButtonAdmin.Location = new System.Drawing.Point(0, 281);
+            this.radioButtonAdmin.Location = new System.Drawing.Point(0, 325);
             this.radioButtonAdmin.Name = "radioButtonAdmin";
             this.radioButtonAdmin.Size = new System.Drawing.Size(61, 19);
             this.radioButtonAdmin.TabIndex = 5;
@@ -140,7 +144,7 @@
             // 
             // textBoxNome
             // 
-            this.textBoxNome.Location = new System.Drawing.Point(3, 18);
+            this.textBoxNome.Location = new System.Drawing.Point(3, 62);
             this.textBoxNome.MaxLength = 120;
             this.textBoxNome.Name = "textBoxNome";
             this.textBoxNome.PlaceholderText = "Nome empregado";
@@ -151,7 +155,7 @@
             // 
             this.labelGrupo.AutoSize = true;
             this.labelGrupo.ForeColor = System.Drawing.Color.White;
-            this.labelGrupo.Location = new System.Drawing.Point(0, 263);
+            this.labelGrupo.Location = new System.Drawing.Point(0, 307);
             this.labelGrupo.Name = "labelGrupo";
             this.labelGrupo.Size = new System.Drawing.Size(43, 15);
             this.labelGrupo.TabIndex = 5;
@@ -161,7 +165,7 @@
             // 
             this.labelSenha.AutoSize = true;
             this.labelSenha.ForeColor = System.Drawing.Color.White;
-            this.labelSenha.Location = new System.Drawing.Point(3, 206);
+            this.labelSenha.Location = new System.Drawing.Point(3, 250);
             this.labelSenha.Name = "labelSenha";
             this.labelSenha.Size = new System.Drawing.Size(42, 15);
             this.labelSenha.TabIndex = 4;
@@ -171,7 +175,7 @@
             // 
             this.labelTelefone.AutoSize = true;
             this.labelTelefone.ForeColor = System.Drawing.Color.White;
-            this.labelTelefone.Location = new System.Drawing.Point(3, 162);
+            this.labelTelefone.Location = new System.Drawing.Point(3, 206);
             this.labelTelefone.Name = "labelTelefone";
             this.labelTelefone.Size = new System.Drawing.Size(54, 15);
             this.labelTelefone.TabIndex = 3;
@@ -181,7 +185,7 @@
             // 
             this.labelMatricula.AutoSize = true;
             this.labelMatricula.ForeColor = System.Drawing.Color.White;
-            this.labelMatricula.Location = new System.Drawing.Point(3, 105);
+            this.labelMatricula.Location = new System.Drawing.Point(3, 149);
             this.labelMatricula.Name = "labelMatricula";
             this.labelMatricula.Size = new System.Drawing.Size(60, 15);
             this.labelMatricula.TabIndex = 2;
@@ -191,18 +195,39 @@
             // 
             this.labelCPF.AutoSize = true;
             this.labelCPF.ForeColor = System.Drawing.Color.White;
-            this.labelCPF.Location = new System.Drawing.Point(3, 47);
+            this.labelCPF.Location = new System.Drawing.Point(3, 91);
             this.labelCPF.Name = "labelCPF";
             this.labelCPF.Size = new System.Drawing.Size(31, 15);
             this.labelCPF.TabIndex = 1;
             this.labelCPF.Text = "CPF:";
+            // 
+            // textBoxID
+            // 
+            this.textBoxID.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBoxID.Enabled = false;
+            this.textBoxID.Location = new System.Drawing.Point(3, 18);
+            this.textBoxID.MaxLength = 120;
+            this.textBoxID.Name = "textBoxID";
+            this.textBoxID.ReadOnly = true;
+            this.textBoxID.Size = new System.Drawing.Size(85, 23);
+            this.textBoxID.TabIndex = 12;
+            // 
+            // labelID
+            // 
+            this.labelID.AutoSize = true;
+            this.labelID.ForeColor = System.Drawing.Color.White;
+            this.labelID.Location = new System.Drawing.Point(3, 0);
+            this.labelID.Name = "labelID";
+            this.labelID.Size = new System.Drawing.Size(18, 15);
+            this.labelID.TabIndex = 11;
+            this.labelID.Text = "ID";
             // 
             // FormFuncionario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
-            this.ClientSize = new System.Drawing.Size(395, 352);
+            this.ClientSize = new System.Drawing.Size(395, 389);
             this.Controls.Add(this.PanelFuncionarios);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -232,5 +257,7 @@
         private TextBox textBoxMatricula;
         private MaskedTextBox maskedTextBoxTelefone;
         private MaskedTextBox maskedTextBoxCPF;
+        private TextBox textBoxID;
+        private Label labelID;
     }
 }

@@ -27,8 +27,6 @@ namespace ProjetoPastelariaDoZe.WinFormsApp
             {
                 try
                 {
-
-
                     if (value != null)
                     {
                         _produto = value!;
@@ -39,7 +37,6 @@ namespace ProjetoPastelariaDoZe.WinFormsApp
                         pictureBoxImagem.Image = Funcoes.ConverterByteArrayParaImagem((byte[])_produto.Foto!);
                     }
                     textBoxNome.Focus();
-
                 }
                 catch (Exception ex)
                 {

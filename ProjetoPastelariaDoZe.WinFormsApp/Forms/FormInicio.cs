@@ -259,29 +259,22 @@ namespace ProjetoPastelariaDoZe.WinFormsApp
             switch (qtdeRows)
             {
                 case 5: // Produto
-                    Produto p = new Produto
-                    {
-                        Numero = id,
-                        Nome = Convert.ToString(selectedRow.Cells[1].Value),
-                        Descricao = Convert.ToString(selectedRow.Cells[2].Value),
-                        ValorUn = Convert.ToDecimal(selectedRow.Cells[3].Value),
-                        Foto = (byte[])selectedRow.Cells[4].Value
-                    };
-
+                    Produto p = RecriarProdutoDaGrid(id, selectedRow);
                     EditarProduto(p);
                     break;
                 case 6: //Funcionário
-                    EditarFuncionario(id);
+                    Funcionario f = RecriarFuncionarioDaGrid(id, selectedRow);
+                    EditarFuncionario(f);
                     break;
-                case 7: // Cliente
-                    EditarCliente(id);
+                case 7: // Cliente 
+                    Cliente c = new();
+                    EditarCliente(c);
                     break;
             }
         }
 
         private void EditarProduto(Produto prod)
         {
-
             FormProdutos telaProd = new FormProdutos
             {
                 StartPosition = FormStartPosition.CenterScreen,
@@ -292,14 +285,47 @@ namespace ProjetoPastelariaDoZe.WinFormsApp
 
             AtualizarTela(telaProd.dao!);
         }
-        private void EditarFuncionario(int id)
+        private void EditarFuncionario(Funcionario func)
+        {
+            FormFuncionario telaFunc = new FormFuncionario
+            {
+                StartPosition = FormStartPosition.CenterScreen,
+                Funcionario = func
+            };
+
+            telaFunc.ShowDialog();
+
+            AtualizarTela(telaFunc.dao);
+        }
+
+        private void EditarCliente(Cliente cliente)
         {
             throw new NotImplementedException();
         }
 
-        private void EditarCliente(int id)
+        private static Produto RecriarProdutoDaGrid(int id, DataGridViewRow selectedRow)
         {
-            throw new NotImplementedException();
+            return new()
+            {
+                Numero = id,
+                Nome = Convert.ToString(selectedRow.Cells[1].Value),
+                Descricao = Convert.ToString(selectedRow.Cells[2].Value),
+                ValorUn = Convert.ToDecimal(selectedRow.Cells[3].Value),
+                Foto = (byte[])selectedRow.Cells[4].Value
+            };
+        }
+
+        private Funcionario RecriarFuncionarioDaGrid(int id, DataGridViewRow selectedRow)
+        {
+            return new()
+            {
+                Numero = id,
+                Nome = Convert.ToString(selectedRow.Cells[1].Value),
+                CPF = Convert.ToString(selectedRow.Cells[2].Value),
+                Telefone = Convert.ToString(selectedRow.Cells[3].Value),
+                Matricula = Convert.ToString(selectedRow.Cells[4].Value),
+                Grupo = Convert.ToInt32(selectedRow.Cells [5].Value)
+            };
         }
     }
 }

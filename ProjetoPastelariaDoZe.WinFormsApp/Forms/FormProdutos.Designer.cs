@@ -156,7 +156,7 @@
             this.textBoxID.MaxLength = 120;
             this.textBoxID.Name = "textBoxID";
             this.textBoxID.ReadOnly = true;
-            this.textBoxID.Size = new System.Drawing.Size(235, 23);
+            this.textBoxID.Size = new System.Drawing.Size(85, 23);
             this.textBoxID.TabIndex = 10;
             // 
             // labelID

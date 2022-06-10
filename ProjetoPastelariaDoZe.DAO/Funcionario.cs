@@ -142,6 +142,64 @@ namespace ProjetoPastelariaDoZe.DAO
             return linhas;
         }
 
+        public void EditarDBProvider(Funcionario funcionario)
+        {
+            using var conexao = factory!.CreateConnection(); // Conexão com o BD
+            conexao!.ConnectionString = StringConexao; // Informa a ConnectionString, o caminho para o BD
+            using var comando = factory.CreateCommand(); // Cria o comando para o BD
+            comando!.Connection = conexao; // Atribui a conexão
+
+            ConfigurarParametrosEditar(funcionario, comando);
+
+            conexao.Open();
+
+            comando.CommandText =
+                @"UPDATE TB_FUNCIONARIO
+                        SET
+                            NOME = @NOME,
+                            CPF = @CPF,
+                            MATRICULA = @MATRICULA,
+                            TELEFONE = @TELEFONE,
+                            GRUPO = @GRUPO
+                        WHERE
+                            ID_FUNCIONARIO = @IDFUNCIONARIO";
+
+            var linhas = comando.ExecuteNonQuery();
+        }
+
+        private void ConfigurarParametrosEditar(Funcionario funcionario, DbCommand comando)
+        {
+            var id = comando.CreateParameter();
+            id.ParameterName = "@IDFUNCIONARIO";
+            id.Value = funcionario.Numero;
+            comando.Parameters.Add(id);
+
+            var nome = comando.CreateParameter();
+            nome.ParameterName = "@NOME";
+            nome.Value = funcionario.Nome;
+            comando.Parameters.Add(nome);
+
+            var cpf = comando.CreateParameter();
+            cpf.ParameterName = "@CPF";
+            cpf.Value = funcionario.CPF;
+            comando.Parameters.Add(cpf);
+
+            var telefone = comando.CreateParameter();
+            telefone.ParameterName = "@TELEFONE";
+            telefone.Value = funcionario.Telefone;
+            comando.Parameters.Add(telefone);
+
+            var matricula = comando.CreateParameter();
+            matricula.ParameterName = "@MATRICULA";
+            matricula.Value = funcionario.Matricula;
+            comando.Parameters.Add(matricula);
+
+            var grupo = comando.CreateParameter();
+            grupo.ParameterName = "@GRUPO";
+            grupo.Value = funcionario.Grupo;
+            comando.Parameters.Add(grupo);
+        }
+
         private static void ConfigurarParametrosFuncionario(Funcionario funcionario, DbCommand comando)
         {
             var nome = comando.CreateParameter();

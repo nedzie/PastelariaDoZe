@@ -4,15 +4,15 @@ using ProjetoPastelariaDoZe.DAO;
 namespace ProjetoPastelariaDoZe.WinFormsApp.Validadores.ModuloFuncionario
 {
     /// <summary>
-    /// Classe validadora de informações do tipo funcionário
+    /// Validador da classe funcionário para edição
     /// </summary>
-    public class ValidadorFuncionario : AbstractValidator<Funcionario>
+    public class ValidadorFuncionarioEditar : AbstractValidator<Funcionario>
     {
         private const string padrao = "^[0-9]{11}$";
         /// <summary>
-        /// Construtor do validador de funcionário
+        /// Construtor
         /// </summary>
-        public ValidadorFuncionario()
+        public ValidadorFuncionarioEditar()
         {
             RuleFor(x => x.Nome)
                 .NotNull()
@@ -36,11 +36,6 @@ namespace ProjetoPastelariaDoZe.WinFormsApp.Validadores.ModuloFuncionario
                 .NotEmpty()
                 .MinimumLength(10)
                 .MaximumLength(11);
-
-            RuleFor(x => x.Senha)
-                .NotNull()
-                .NotEmpty()
-                .MaximumLength(200);
 
             RuleFor(x => x.Grupo)
                 .NotNull()
