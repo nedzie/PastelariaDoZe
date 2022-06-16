@@ -18,6 +18,9 @@ namespace ProjetoPastelariaDoZe.WinFormsApp
         public FormInicio()
         {
             InitializeComponent();
+
+            AjustarTelaLogin();
+
             Funcoes.AjustaResourcesForm(this);
             Funcoes.EventoFocoCampos(this);
             this.KeyDown += new KeyEventHandler(Funcoes.FormEventoKeyDown!);
@@ -86,6 +89,7 @@ namespace ProjetoPastelariaDoZe.WinFormsApp
                 StartPosition = FormStartPosition.CenterParent
             };
             login.ShowDialog(); // Modal
+            AjustarTelaLogin();
         }
 
         private void buttonFuncionarios_Click(object sender, EventArgs e)
@@ -367,6 +371,46 @@ namespace ProjetoPastelariaDoZe.WinFormsApp
                     MarcaFiado = Convert.ToInt32(selectedRow.Cells[5].Value),
                     DiaDoFiado = Convert.ToInt32(selectedRow.Cells[6].Value)
                 };
+        }
+
+        private void AjustarTelaLogin()
+        {
+            if (!Program.estaLogado) // false
+            {
+                buttonInicio.Enabled = Program.estaLogado;
+                buttonCaixa.Enabled = Program.estaLogado;
+                buttonFuncionarios.Enabled = Program.estaLogado;
+                buttonComandas.Enabled = Program.estaLogado;
+                buttonClientes.Enabled = Program.estaLogado;
+                buttonProdutos.Enabled = Program.estaLogado;
+                buttonConfiguracoes.Enabled = Program.estaLogado;
+            }
+            else
+            {
+                labelNome.Text = Program.nomeLogado;
+                labelGroup.Text = Program.grupoLogado == 1 ? "Admin" : "Balcão";
+
+                if (Program.grupoLogado == 1)
+                {
+                    buttonInicio.Enabled = Program.estaLogado;
+                    buttonCaixa.Enabled = Program.estaLogado;
+                    buttonFuncionarios.Enabled = Program.estaLogado;
+                    buttonComandas.Enabled = Program.estaLogado;
+                    buttonClientes.Enabled = Program.estaLogado;
+                    buttonProdutos.Enabled = Program.estaLogado;
+                    buttonConfiguracoes.Enabled = Program.estaLogado;
+                }
+                else
+                {
+                    buttonInicio.Enabled = Program.estaLogado;
+                    buttonCaixa.Enabled = !Program.estaLogado;
+                    buttonFuncionarios.Enabled = !Program.estaLogado;
+                    buttonComandas.Enabled = Program.estaLogado;
+                    buttonClientes.Enabled = !Program.estaLogado;
+                    buttonProdutos.Enabled = !Program.estaLogado;
+                    buttonConfiguracoes.Enabled = !Program.estaLogado;
+                }
+            }
         }
     }
 }

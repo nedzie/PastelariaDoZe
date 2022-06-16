@@ -42,6 +42,10 @@
             this.buttonComandas = new System.Windows.Forms.Button();
             this.buttonInicio = new System.Windows.Forms.Button();
             this.panelMenuSuperior = new System.Windows.Forms.Panel();
+            this.labelGroup = new System.Windows.Forms.Label();
+            this.labelNome = new System.Windows.Forms.Label();
+            this.labelGrupo = new System.Windows.Forms.Label();
+            this.labelUsuario = new System.Windows.Forms.Label();
             this.panelMenuGeral = new System.Windows.Forms.Panel();
             this.dataGridViewDados = new System.Windows.Forms.DataGridView();
             this.contextMenuStripInicio = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -63,6 +67,7 @@
             this.toolStripMenuItemSystemTraySair = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemSystemTraySobre = new System.Windows.Forms.ToolStripMenuItem();
             this.panelMenuLateral.SuspendLayout();
+            this.panelMenuSuperior.SuspendLayout();
             this.panelMenuGeral.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDados)).BeginInit();
             this.contextMenuStripInicio.SuspendLayout();
@@ -278,10 +283,56 @@
             // panelMenuSuperior
             // 
             this.panelMenuSuperior.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.panelMenuSuperior.Controls.Add(this.labelGroup);
+            this.panelMenuSuperior.Controls.Add(this.labelNome);
+            this.panelMenuSuperior.Controls.Add(this.labelGrupo);
+            this.panelMenuSuperior.Controls.Add(this.labelUsuario);
             this.panelMenuSuperior.Location = new System.Drawing.Point(209, 0);
             this.panelMenuSuperior.Name = "panelMenuSuperior";
             this.panelMenuSuperior.Size = new System.Drawing.Size(1098, 103);
             this.panelMenuSuperior.TabIndex = 1;
+            // 
+            // labelGroup
+            // 
+            this.labelGroup.AutoSize = true;
+            this.labelGroup.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.labelGroup.ForeColor = System.Drawing.Color.White;
+            this.labelGroup.Location = new System.Drawing.Point(939, 57);
+            this.labelGroup.Name = "labelGroup";
+            this.labelGroup.Size = new System.Drawing.Size(58, 15);
+            this.labelGroup.TabIndex = 3;
+            this.labelGroup.Text = "                 ";
+            // 
+            // labelNome
+            // 
+            this.labelNome.AutoSize = true;
+            this.labelNome.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.labelNome.ForeColor = System.Drawing.Color.White;
+            this.labelNome.Location = new System.Drawing.Point(939, 30);
+            this.labelNome.Name = "labelNome";
+            this.labelNome.Size = new System.Drawing.Size(58, 15);
+            this.labelNome.TabIndex = 2;
+            this.labelNome.Text = "                 ";
+            // 
+            // labelGrupo
+            // 
+            this.labelGrupo.AutoSize = true;
+            this.labelGrupo.ForeColor = System.Drawing.Color.White;
+            this.labelGrupo.Location = new System.Drawing.Point(873, 57);
+            this.labelGrupo.Name = "labelGrupo";
+            this.labelGrupo.Size = new System.Drawing.Size(43, 15);
+            this.labelGrupo.TabIndex = 1;
+            this.labelGrupo.Text = "Grupo:";
+            // 
+            // labelUsuario
+            // 
+            this.labelUsuario.AutoSize = true;
+            this.labelUsuario.ForeColor = System.Drawing.Color.White;
+            this.labelUsuario.Location = new System.Drawing.Point(873, 30);
+            this.labelUsuario.Name = "labelUsuario";
+            this.labelUsuario.Size = new System.Drawing.Size(50, 15);
+            this.labelUsuario.TabIndex = 0;
+            this.labelUsuario.Text = "Usuário:";
             // 
             // panelMenuGeral
             // 
@@ -463,6 +514,8 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Inicio_FormClosing);
             this.Resize += new System.EventHandler(this.Inicio_Resize);
             this.panelMenuLateral.ResumeLayout(false);
+            this.panelMenuSuperior.ResumeLayout(false);
+            this.panelMenuSuperior.PerformLayout();
             this.panelMenuGeral.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDados)).EndInit();
             this.contextMenuStripInicio.ResumeLayout(false);
@@ -508,5 +561,9 @@
         private ToolStripMenuItem toolStripMenuItemSystemTraySobre;
         private Button buttonSair;
         private DataGridView dataGridViewDados;
+        private Label labelGrupo;
+        private Label labelUsuario;
+        private Label labelGroup;
+        private Label labelNome;
     }
 }

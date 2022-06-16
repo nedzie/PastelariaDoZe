@@ -50,11 +50,17 @@
             this.comboBoxProvedores = new System.Windows.Forms.ComboBox();
             this.labelConnectionString = new System.Windows.Forms.Label();
             this.labelProvider = new System.Windows.Forms.Label();
+            this.tabPageLog = new System.Windows.Forms.TabPage();
+            this.buttonLocalizar = new System.Windows.Forms.Button();
+            this.textBoxLocalLog = new System.Windows.Forms.TextBox();
+            this.labelLocal = new System.Windows.Forms.Label();
+            this.buttonSalvar = new System.Windows.Forms.Button();
             this.panelFundoConfiguracoes.SuspendLayout();
             this.tabControlParametrosParaCobranca.SuspendLayout();
             this.tabPageParametros.SuspendLayout();
             this.tabPageIdiomaRegiao.SuspendLayout();
             this.tabPageBancoDeDados.SuspendLayout();
+            this.tabPageLog.SuspendLayout();
             this.SuspendLayout();
             // 
             // labelTaxaJurosDiaria
@@ -82,6 +88,7 @@
             this.tabControlParametrosParaCobranca.Controls.Add(this.tabPageParametros);
             this.tabControlParametrosParaCobranca.Controls.Add(this.tabPageIdiomaRegiao);
             this.tabControlParametrosParaCobranca.Controls.Add(this.tabPageBancoDeDados);
+            this.tabControlParametrosParaCobranca.Controls.Add(this.tabPageLog);
             this.tabControlParametrosParaCobranca.Location = new System.Drawing.Point(3, 3);
             this.tabControlParametrosParaCobranca.Multiline = true;
             this.tabControlParametrosParaCobranca.Name = "tabControlParametrosParaCobranca";
@@ -266,6 +273,65 @@
             this.labelProvider.TabIndex = 0;
             this.labelProvider.Text = "Provider:";
             // 
+            // tabPageLog
+            // 
+            this.tabPageLog.BackColor = System.Drawing.Color.Black;
+            this.tabPageLog.Controls.Add(this.buttonLocalizar);
+            this.tabPageLog.Controls.Add(this.textBoxLocalLog);
+            this.tabPageLog.Controls.Add(this.labelLocal);
+            this.tabPageLog.Controls.Add(this.buttonSalvar);
+            this.tabPageLog.Location = new System.Drawing.Point(4, 24);
+            this.tabPageLog.Name = "tabPageLog";
+            this.tabPageLog.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageLog.Size = new System.Drawing.Size(629, 228);
+            this.tabPageLog.TabIndex = 3;
+            this.tabPageLog.Text = "Armazenamento LOG";
+            // 
+            // buttonLocalizar
+            // 
+            this.buttonLocalizar.BackColor = System.Drawing.Color.White;
+            this.buttonLocalizar.FlatAppearance.BorderSize = 0;
+            this.buttonLocalizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonLocalizar.Location = new System.Drawing.Point(278, 44);
+            this.buttonLocalizar.Name = "buttonLocalizar";
+            this.buttonLocalizar.Size = new System.Drawing.Size(75, 23);
+            this.buttonLocalizar.TabIndex = 9;
+            this.buttonLocalizar.Text = "Localizar";
+            this.buttonLocalizar.UseVisualStyleBackColor = false;
+            this.buttonLocalizar.Click += new System.EventHandler(this.buttonLocalizar_Click);
+            // 
+            // textBoxLocalLog
+            // 
+            this.textBoxLocalLog.Enabled = false;
+            this.textBoxLocalLog.Location = new System.Drawing.Point(29, 44);
+            this.textBoxLocalLog.Name = "textBoxLocalLog";
+            this.textBoxLocalLog.ReadOnly = true;
+            this.textBoxLocalLog.Size = new System.Drawing.Size(232, 23);
+            this.textBoxLocalLog.TabIndex = 8;
+            // 
+            // labelLocal
+            // 
+            this.labelLocal.AutoSize = true;
+            this.labelLocal.ForeColor = System.Drawing.Color.White;
+            this.labelLocal.Location = new System.Drawing.Point(29, 26);
+            this.labelLocal.Name = "labelLocal";
+            this.labelLocal.Size = new System.Drawing.Size(38, 15);
+            this.labelLocal.TabIndex = 7;
+            this.labelLocal.Text = "Local:";
+            // 
+            // buttonSalvar
+            // 
+            this.buttonSalvar.BackColor = System.Drawing.Color.White;
+            this.buttonSalvar.FlatAppearance.BorderSize = 0;
+            this.buttonSalvar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonSalvar.Location = new System.Drawing.Point(548, 199);
+            this.buttonSalvar.Name = "buttonSalvar";
+            this.buttonSalvar.Size = new System.Drawing.Size(75, 23);
+            this.buttonSalvar.TabIndex = 6;
+            this.buttonSalvar.Text = "Salvar";
+            this.buttonSalvar.UseVisualStyleBackColor = false;
+            this.buttonSalvar.Click += new System.EventHandler(this.buttonSalvar_Click_1);
+            // 
             // FormConfiguracoes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -289,6 +355,8 @@
             this.tabPageIdiomaRegiao.PerformLayout();
             this.tabPageBancoDeDados.ResumeLayout(false);
             this.tabPageBancoDeDados.PerformLayout();
+            this.tabPageLog.ResumeLayout(false);
+            this.tabPageLog.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -313,5 +381,10 @@
         private Button buttonSalvarIdioma;
         private Button buttonSalvarBD;
         private ComboBox comboBoxConnectionStrings;
+        private TabPage tabPageLog;
+        private Button buttonLocalizar;
+        private TextBox textBoxLocalLog;
+        private Label labelLocal;
+        private Button buttonSalvar;
     }
 }

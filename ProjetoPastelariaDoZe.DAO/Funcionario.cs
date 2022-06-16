@@ -257,5 +257,45 @@ namespace ProjetoPastelariaDoZe.DAO
             id.Value = funcionario.Numero;
             comando.Parameters.Add(id);
         }
+
+        public DataTable ValidaLogin(Funcionario funcionario)
+        {
+            using var conexao = factory!.CreateConnection(); // Conexão com o BD
+            conexao!.ConnectionString = StringConexao; // Informa a ConnectionString, o caminho para o BD
+            using var comando = factory.CreateCommand(); // Cria o comando para o BD
+            comando!.Connection = conexao; // Atribui a conexão
+
+            var cpf = comando.CreateParameter();
+            cpf.ParameterName = "@CPF";
+            cpf.Value = funcionario.CPF;
+            comando.Parameters.Add(cpf);
+
+            var senha = comando.CreateParameter();
+            senha.ParameterName = "@SENHA";
+            senha.Value = funcionario.Senha;
+            comando.Parameters.Add(senha);
+
+            conexao.Open();
+
+            comando.CommandText =
+                @"SELECT
+                        ID_FUNCIONARIO AS ID,
+                        NOME AS NOME,
+                        CPF AS CPF,
+                        TELEFONE AS TELEFONE,
+                        MATRICULA AS MATRICULA,
+                        GRUPO AS GRUPO
+                    FROM
+                        TB_FUNCIONARIO
+                    WHERE
+                        CPF = @CPF AND SENHA = @SENHA";
+
+            var sdr = comando.ExecuteReader();
+            DataTable linhas = new();
+            linhas.Load(sdr);
+
+            return linhas;
+
+        }
     }
 }

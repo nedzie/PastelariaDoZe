@@ -92,5 +92,33 @@ namespace ProjetoPastelariaDoZe.WinFormsApp
             if(deuCerto)
                 _ = MessageBox.Show("Alterou BD");
         }
+
+        private void buttonLocalizar_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveFileDialogLog = new();
+
+            saveFileDialogLog.Filter = "Arquivo|*.txt";
+            saveFileDialogLog.Title = "Seleciona o local para salvar";
+            saveFileDialogLog.FileName = "LOG.TXT";
+
+            saveFileDialogLog.ShowDialog();
+
+            if(saveFileDialogLog.FileName != "")
+            {
+                FileStream fs = (FileStream)saveFileDialogLog.OpenFile();
+                fs.Close();
+            }
+
+            textBoxLocalLog.Text = saveFileDialogLog.FileName.ToString();
+        }
+
+        private void buttonSalvar_Click_1(object sender, EventArgs e)
+        {
+            Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+            config.AppSettings.Settings.Remove("LocalLog");
+            config.AppSettings.Settings.Add("LocalLog", textBoxLocalLog.Text);
+            config.Save(ConfigurationSaveMode.Modified);
+            ConfigurationManager.RefreshSection("appSettings");
+        }
     }
 }
