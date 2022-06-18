@@ -1,5 +1,6 @@
 ﻿using ProjetoPastelariaDoZe.DAO.Compartilhado;
 using ProjetoPastelariaDoZe.DAO.ModuloComanda;
+using ProjetoPastelariaDoZe.DAO.ModuloProduto;
 using ProjetoPastelariaDoZe.WinFormsApp.Compartilhado;
 using System.Configuration;
 using System.Data;
@@ -11,6 +12,7 @@ namespace ProjetoPastelariaDoZe.WinFormsApp
     public partial class FormComandas : Form
     {
         ComandaDAO? dao;
+        ProdutoDAO? cdao;
         /// <summary>
         /// Construtor da classe Comandas
         /// </summary>
@@ -41,6 +43,7 @@ namespace ProjetoPastelariaDoZe.WinFormsApp
             string connectionString = ConfigurationManager.ConnectionStrings["BD"].ConnectionString;
 
             dao = new(provider, connectionString);
+            cdao = new(provider, connectionString);
         }
 
         private void ButtonSair_Click(object? sender, EventArgs e)
@@ -83,12 +86,34 @@ namespace ProjetoPastelariaDoZe.WinFormsApp
             };
             try
             {
-                // chama o método para buscar todos os dados da nossa camada model
                 DataTable linhas = dao!.ListarComandas(comanda);
-                // seta o data souce com os dados retornados
+
                 dataGridViewComandasAbertas.AutoGenerateColumns = true;
                 dataGridViewComandasAbertas.DataSource = linhas;
                 dataGridViewComandasAbertas.Refresh();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void buttonPesquisar_Click(object sender, EventArgs e)
+        {
+            var produto = new Produto
+            {
+                Numero = 0,
+                Nome = textBoxProduto.Text
+            };
+            try
+            {
+                //chama o método para buscar todos os dados da nossa camada model
+                DataTable linhas = cdao!.SelectDBProvider(produto);
+                // seta o datasouce do dataGridView com os dados retornados
+                dataGridViewProdutos.Columns.Clear();
+                dataGridViewProdutos.AutoGenerateColumns = true;
+                dataGridViewProdutos.DataSource = linhas;
+                dataGridViewProdutos.Refresh();
             }
             catch (Exception ex)
             {

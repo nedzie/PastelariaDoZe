@@ -38,7 +38,7 @@
             this.dataGridViewComandasAbertas = new System.Windows.Forms.DataGridView();
             this.panelProdutos = new System.Windows.Forms.Panel();
             this.buttonPesquisar = new System.Windows.Forms.Button();
-            this.textBoxProcurarNome = new System.Windows.Forms.TextBox();
+            this.textBoxProduto = new System.Windows.Forms.TextBox();
             this.groupBoxProdutos = new System.Windows.Forms.GroupBox();
             this.dataGridViewProdutos = new System.Windows.Forms.DataGridView();
             this.panelAbrirComanda = new System.Windows.Forms.Panel();
@@ -144,7 +144,7 @@
             // panelProdutos
             // 
             this.panelProdutos.Controls.Add(this.buttonPesquisar);
-            this.panelProdutos.Controls.Add(this.textBoxProcurarNome);
+            this.panelProdutos.Controls.Add(this.textBoxProduto);
             this.panelProdutos.Controls.Add(this.groupBoxProdutos);
             this.panelProdutos.Location = new System.Drawing.Point(763, 3);
             this.panelProdutos.Name = "panelProdutos";
@@ -154,7 +154,6 @@
             // buttonPesquisar
             // 
             this.buttonPesquisar.BackColor = System.Drawing.Color.White;
-            this.buttonPesquisar.Enabled = false;
             this.buttonPesquisar.FlatAppearance.BorderSize = 0;
             this.buttonPesquisar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonPesquisar.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -164,15 +163,15 @@
             this.buttonPesquisar.TabIndex = 7;
             this.buttonPesquisar.Text = "Pesquisar";
             this.buttonPesquisar.UseVisualStyleBackColor = false;
+            this.buttonPesquisar.Click += new System.EventHandler(this.buttonPesquisar_Click);
             // 
-            // textBoxProcurarNome
+            // textBoxProduto
             // 
-            this.textBoxProcurarNome.Enabled = false;
-            this.textBoxProcurarNome.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBoxProcurarNome.Location = new System.Drawing.Point(26, 32);
-            this.textBoxProcurarNome.Name = "textBoxProcurarNome";
-            this.textBoxProcurarNome.Size = new System.Drawing.Size(225, 33);
-            this.textBoxProcurarNome.TabIndex = 6;
+            this.textBoxProduto.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBoxProduto.Location = new System.Drawing.Point(26, 32);
+            this.textBoxProduto.Name = "textBoxProduto";
+            this.textBoxProduto.Size = new System.Drawing.Size(225, 33);
+            this.textBoxProduto.TabIndex = 6;
             // 
             // groupBoxProdutos
             // 
@@ -289,7 +288,7 @@
         private DataGridView dataGridViewComandasAbertas;
         private DataGridView dataGridViewProdutos;
         private Button buttonPesquisar;
-        private TextBox textBoxProcurarNome;
+        private TextBox textBoxProduto;
         private GroupBox groupBoxComandasAbertas;
         private GroupBox groupBoxItensComanda;
         private GroupBox groupBoxProdutos;
