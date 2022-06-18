@@ -3,7 +3,7 @@ using ProjetoPastelariaDoZe.DAO.Compartilhado;
 using System.Data;
 using System.Data.Common;
 
-namespace ProjetoPastelariaDoZe.DAO
+namespace ProjetoPastelariaDoZe.DAO.ModuloFuncionario
 {
     public class Funcionario
     {
@@ -43,13 +43,13 @@ namespace ProjetoPastelariaDoZe.DAO
 
         public Funcionario(int num = 0, string nome = "", string cpf = "", string matricula = "", string tel = "", string senha = "", int grupo = 0)
         {
-            this.Numero = num;
-            this.Nome = nome;
-            this.CPF = cpf;
-            this.Matricula = matricula;
-            this.Telefone = tel;
-            this.Senha = senha;
-            this.Grupo = grupo;
+            Numero = num;
+            Nome = nome;
+            CPF = cpf;
+            Matricula = matricula;
+            Telefone = tel;
+            Senha = senha;
+            Grupo = grupo;
         }
     }
 
@@ -67,9 +67,9 @@ namespace ProjetoPastelariaDoZe.DAO
         }
         public FuncionarioDAO(string provider, string stringConexao)
         {
-            this.Provider = provider;
-            this.StringConexao = stringConexao;
-            this.factory = DbProviderFactories.GetFactory(Provider);
+            Provider = provider;
+            StringConexao = stringConexao;
+            factory = DbProviderFactories.GetFactory(Provider);
         }
 
         public void InserirDBProvider(Funcionario funcionario)

@@ -1,12 +1,12 @@
 ﻿using FluentValidation;
-using ProjetoPastelariaDoZe.DAO;
+using ProjetoPastelariaDoZe.DAO.ModuloCliente;
 
 namespace ProjetoPastelariaDoZe.WinFormsApp.Validadores.ModuloCliente
 {
     /// <summary>
     /// Validador de cliente para quando não compra fiado e usa CNPJ
     /// </summary>
-    public class ValidadorClienteFiadoCNPJ : AbstractValidator<DAO.Cliente>
+    public class ValidadorClienteFiadoCNPJ : AbstractValidator<Cliente>
     {
         private const string padraoCNPJ = "^[0-9]{14}";
         /// <summary>

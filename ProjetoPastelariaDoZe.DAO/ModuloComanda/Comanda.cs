@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProjetoPastelariaDoZe.DAO
+namespace ProjetoPastelariaDoZe.DAO.ModuloComanda
 {
     public class Comanda
     {
@@ -45,13 +45,13 @@ namespace ProjetoPastelariaDoZe.DAO
         private string? Provider { get; set; }
         private string? StringConexao { get; set; }
 
-        public ComandaDAO( string? provider, string? connectionString)
+        public ComandaDAO(string? provider, string? connectionString)
         {
             Provider = provider;
-            this.StringConexao = connectionString;
-            this.factory = DbProviderFactories.GetFactory(Provider!);
+            StringConexao = connectionString;
+            factory = DbProviderFactories.GetFactory(Provider!);
         }
-        
+
         public bool AbreNovaComanda(Comanda comanda)
         {
             using var conexao = factory!.CreateConnection(); //Cria conexão
@@ -76,7 +76,7 @@ namespace ProjetoPastelariaDoZe.DAO
 
             conexao.Open();
             // antes de abrir a comanda validar se ela já não esta aberta
-            comando.CommandText = 
+            comando.CommandText =
                 @"SELECT 
                         ID_COMANDA 
                     FROM 
@@ -92,7 +92,7 @@ namespace ProjetoPastelariaDoZe.DAO
                 return false;
             else
             {
-                comando.CommandText = 
+                comando.CommandText =
                     @"INSERT 
                         INTO 
                             TB_COMANDA

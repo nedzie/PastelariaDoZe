@@ -1,5 +1,5 @@
 ﻿using FluentValidation.Results;
-using ProjetoPastelariaDoZe.DAO;
+using ProjetoPastelariaDoZe.DAO.ModuloFuncionario;
 using ProjetoPastelariaDoZe.WinFormsApp.Compartilhado;
 using ProjetoPastelariaDoZe.WinFormsApp.Validadores.ModuloFuncionario;
 using System.Configuration;

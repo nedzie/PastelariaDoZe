@@ -1,5 +1,5 @@
-﻿using ProjetoPastelariaDoZe.DAO;
-using ProjetoPastelariaDoZe.DAO.Arquivamento;
+﻿using ProjetoPastelariaDoZe.DAO.Arquivamento;
+using ProjetoPastelariaDoZe.DAO.ModuloFuncionario;
 using ProjetoPastelariaDoZe.WinFormsApp.Compartilhado;
 using System.Configuration;
 using System.Data;

@@ -1,6 +1,8 @@
-using ProjetoPastelariaDoZe.DAO;
 using ProjetoPastelariaDoZe.DAO.Arquivamento;
 using ProjetoPastelariaDoZe.DAO.Compartilhado;
+using ProjetoPastelariaDoZe.DAO.ModuloCliente;
+using ProjetoPastelariaDoZe.DAO.ModuloFuncionario;
+using ProjetoPastelariaDoZe.DAO.ModuloProduto;
 using ProjetoPastelariaDoZe.WinFormsApp.Compartilhado;
 using System.ComponentModel;
 using System.Data;
@@ -158,7 +160,9 @@ namespace ProjetoPastelariaDoZe.WinFormsApp
         private void buttonComandas_Click(object sender, EventArgs e)
         {
             FormComandas comanda = new();
-            comanda.Show();
+            this.Opacity = 0;
+            comanda.ShowDialog();
+            this.Opacity = 100;
         }
 
         private void buttonConfiguracoes_Click(object sender, EventArgs e)

@@ -3,7 +3,7 @@ using ProjetoPastelariaDoZe.DAO.Compartilhado;
 using System.Data;
 using System.Data.Common;
 
-namespace ProjetoPastelariaDoZe.DAO
+namespace ProjetoPastelariaDoZe.DAO.ModuloCliente
 {
     public class Cliente
     {
@@ -53,18 +53,18 @@ namespace ProjetoPastelariaDoZe.DAO
 
         public Cliente(string nome)
         {
-            this.Nome = nome;
+            Nome = nome;
         }
 
         public Cliente(string nome, string cpf, string cnpj, string tel, string senha, int mf, int ddf)
         {
-            this.Nome = nome;
-            this.CPF = cpf;
-            this.CNPJ = cnpj;
-            this.Telefone = tel;
-            this.Senha = senha;
-            this.MarcaFiado = mf;
-            this.DiaDoFiado = ddf;
+            Nome = nome;
+            CPF = cpf;
+            CNPJ = cnpj;
+            Telefone = tel;
+            Senha = senha;
+            MarcaFiado = mf;
+            DiaDoFiado = ddf;
         }
     }
 
@@ -78,7 +78,7 @@ namespace ProjetoPastelariaDoZe.DAO
         {
             Provider = provider;
             StringConexao = stringConexao;
-            this.factory = DbProviderFactories.GetFactory(Provider);
+            factory = DbProviderFactories.GetFactory(Provider);
         }
 
         public void InserirDBProvider(Cliente cliente)
@@ -257,7 +257,7 @@ namespace ProjetoPastelariaDoZe.DAO
             comando.Parameters.Add(diaDoFiado);
         }
 
-        
+
 
         private void ConfigurarParametrosEditar(Cliente cliente, DbCommand comando)
         {

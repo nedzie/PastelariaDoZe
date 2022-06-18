@@ -1,5 +1,5 @@
 ﻿using FluentValidation;
-using ProjetoPastelariaDoZe.DAO;
+using ProjetoPastelariaDoZe.DAO.ModuloProduto;
 
 namespace ProjetoPastelariaDoZe.WinFormsApp.Validadores.ModuloProduto
 {

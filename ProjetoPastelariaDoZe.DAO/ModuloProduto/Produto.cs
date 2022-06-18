@@ -3,7 +3,7 @@ using ProjetoPastelariaDoZe.DAO.Compartilhado;
 using System.Data;
 using System.Data.Common;
 
-namespace ProjetoPastelariaDoZe.DAO
+namespace ProjetoPastelariaDoZe.DAO.ModuloProduto
 {
     public class Produto
     {
@@ -28,8 +28,8 @@ namespace ProjetoPastelariaDoZe.DAO
         public ProdutoDAO(string provider, string connectionString)
         {
             Provider = provider;
-            this.StringConexao = connectionString;
-            this.factory = DbProviderFactories.GetFactory(Provider);
+            StringConexao = connectionString;
+            factory = DbProviderFactories.GetFactory(Provider);
         }
 
         public void InserirDBProvider(Produto produto)

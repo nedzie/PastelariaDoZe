@@ -1,6 +1,6 @@
 ﻿using FluentValidation.Results;
-using ProjetoPastelariaDoZe.DAO;
 using ProjetoPastelariaDoZe.DAO.Arquivamento;
+using ProjetoPastelariaDoZe.DAO.ModuloProduto;
 using ProjetoPastelariaDoZe.WinFormsApp.Compartilhado;
 using ProjetoPastelariaDoZe.WinFormsApp.Validadores.ModuloProduto;
 using System.Configuration;

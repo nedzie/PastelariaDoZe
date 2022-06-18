@@ -1,12 +1,12 @@
 ﻿using FluentValidation;
-using ProjetoPastelariaDoZe.DAO;
+using ProjetoPastelariaDoZe.DAO.ModuloCliente;
 
 namespace ProjetoPastelariaDoZe.WinFormsApp.Validadores.ModuloCliente
 {
     /// <summary>
     /// Validador da classe Cliente para quando o cliente compra fiado e usa CPF
     /// </summary>
-    public class ValidadorClienteFiadoCPF : AbstractValidator<DAO.Cliente>
+    public class ValidadorClienteFiadoCPF : AbstractValidator<Cliente>
     {
         private const string padraoCPF = "^[0-9]{11}$";
         /// <summary>
