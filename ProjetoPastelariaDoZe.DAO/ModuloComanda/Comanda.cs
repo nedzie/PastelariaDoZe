@@ -104,5 +104,36 @@ namespace ProjetoPastelariaDoZe.DAO.ModuloComanda
                 return true;
             }
         }
+
+        public DataTable ListarComandas(Comanda comanda)
+        {
+            using var conexao = factory!.CreateConnection(); //Cria conexão
+            conexao!.ConnectionString = StringConexao; //Atribui a string de conexão
+            using var comando = factory.CreateCommand(); //Cria comando
+            comando!.Connection = conexao; //Atribui conexão
+                                           //Adiciona parâmetros (@campo e valor)
+            var statusComanda = comando.CreateParameter();
+            statusComanda.ParameterName = "@statusComanda";
+            statusComanda.Value = comanda.StatusComanda;
+            comando.Parameters.Add(statusComanda);
+            conexao.Open();
+            comando.CommandText =
+            @"SELECT 
+                ID_COMANDA AS ID, 
+                COMANDA AS COMANDA, 
+                DATA_HORA AS DATA, 
+                STATUS_COMANDA AS STATUS 
+            FROM 
+                TB_COMANDA 
+            WHERE 
+                STATUS_COMANDA = @STATUSCOMANDA";
+
+            var sdr = comando.ExecuteReader();
+
+            DataTable linhas = new();
+            linhas.Load(sdr);
+
+            return linhas;
+        }
     }
 }

@@ -91,11 +91,17 @@
             // 
             // dataGridViewItensComanda
             // 
+            this.dataGridViewItensComanda.AllowUserToAddRows = false;
+            this.dataGridViewItensComanda.AllowUserToDeleteRows = false;
+            this.dataGridViewItensComanda.AllowUserToResizeRows = false;
             this.dataGridViewItensComanda.BackgroundColor = System.Drawing.Color.DimGray;
             this.dataGridViewItensComanda.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewItensComanda.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dataGridViewItensComanda.Location = new System.Drawing.Point(6, 22);
+            this.dataGridViewItensComanda.MultiSelect = false;
             this.dataGridViewItensComanda.Name = "dataGridViewItensComanda";
             this.dataGridViewItensComanda.RowTemplate.Height = 25;
+            this.dataGridViewItensComanda.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewItensComanda.Size = new System.Drawing.Size(742, 268);
             this.dataGridViewItensComanda.TabIndex = 1;
             // 
@@ -121,11 +127,17 @@
             // 
             // dataGridViewComandasAbertas
             // 
+            this.dataGridViewComandasAbertas.AllowUserToAddRows = false;
+            this.dataGridViewComandasAbertas.AllowUserToDeleteRows = false;
+            this.dataGridViewComandasAbertas.AllowUserToResizeRows = false;
             this.dataGridViewComandasAbertas.BackgroundColor = System.Drawing.Color.DimGray;
             this.dataGridViewComandasAbertas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewComandasAbertas.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dataGridViewComandasAbertas.Location = new System.Drawing.Point(6, 22);
+            this.dataGridViewComandasAbertas.MultiSelect = false;
             this.dataGridViewComandasAbertas.Name = "dataGridViewComandasAbertas";
             this.dataGridViewComandasAbertas.RowTemplate.Height = 25;
+            this.dataGridViewComandasAbertas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewComandasAbertas.Size = new System.Drawing.Size(745, 251);
             this.dataGridViewComandasAbertas.TabIndex = 0;
             // 
@@ -176,11 +188,17 @@
             // 
             // dataGridViewProdutos
             // 
+            this.dataGridViewProdutos.AllowUserToAddRows = false;
+            this.dataGridViewProdutos.AllowUserToDeleteRows = false;
+            this.dataGridViewProdutos.AllowUserToResizeRows = false;
             this.dataGridViewProdutos.BackgroundColor = System.Drawing.Color.DimGray;
             this.dataGridViewProdutos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewProdutos.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dataGridViewProdutos.Location = new System.Drawing.Point(6, 106);
+            this.dataGridViewProdutos.MultiSelect = false;
             this.dataGridViewProdutos.Name = "dataGridViewProdutos";
             this.dataGridViewProdutos.RowTemplate.Height = 25;
+            this.dataGridViewProdutos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewProdutos.Size = new System.Drawing.Size(716, 570);
             this.dataGridViewProdutos.TabIndex = 2;
             // 

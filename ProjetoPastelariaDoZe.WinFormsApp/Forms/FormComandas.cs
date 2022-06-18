@@ -2,6 +2,7 @@
 using ProjetoPastelariaDoZe.DAO.ModuloComanda;
 using ProjetoPastelariaDoZe.WinFormsApp.Compartilhado;
 using System.Configuration;
+using System.Data;
 
 namespace ProjetoPastelariaDoZe.WinFormsApp
 {   /// <summary>
@@ -20,6 +21,7 @@ namespace ProjetoPastelariaDoZe.WinFormsApp
             this.KeyDown += new KeyEventHandler(Funcoes.FormEventoKeyDown!);
             this.Text = Properties.Resources.ResourceManager.GetString("formComandas.Text");
             ConfigurarUserControl();
+            AtualizarTelAreaComandas();
         }
 
         private void ConfigurarUserControl()
@@ -64,7 +66,29 @@ namespace ProjetoPastelariaDoZe.WinFormsApp
                 else
                 {
                     MessageBox.Show("Comanda aberta com sucesso!");
+                    AtualizarTelAreaComandas();
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void AtualizarTelAreaComandas()
+        {
+            var comanda = new Comanda
+            {
+                StatusComanda = 0
+            };
+            try
+            {
+                // chama o método para buscar todos os dados da nossa camada model
+                DataTable linhas = dao!.ListarComandas(comanda);
+                // seta o data souce com os dados retornados
+                dataGridViewComandasAbertas.AutoGenerateColumns = true;
+                dataGridViewComandasAbertas.DataSource = linhas;
+                dataGridViewComandasAbertas.Refresh();
             }
             catch (Exception ex)
             {
