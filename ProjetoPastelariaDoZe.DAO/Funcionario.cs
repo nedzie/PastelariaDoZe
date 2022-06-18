@@ -1,4 +1,5 @@
-﻿using ProjetoPastelariaDoZe.DAO.Compartilhado;
+﻿using ProjetoPastelariaDoZe.DAO.Arquivamento;
+using ProjetoPastelariaDoZe.DAO.Compartilhado;
 using System.Data;
 using System.Data.Common;
 
@@ -104,42 +105,8 @@ namespace ProjetoPastelariaDoZe.DAO
                             )";
 
             var linhas = comando.ExecuteNonQuery();
-        }
 
-        public override DataTable SelectDBProvider(object funcionario)
-        {
-            using var conexao = factory!.CreateConnection(); // Conexão com o BD
-            conexao!.ConnectionString = StringConexao; // Informa a ConnectionString, o caminho para o BD
-            using var comando = factory.CreateCommand(); // Cria o comando para o BD
-            comando!.Connection = conexao; // Atribui a conexão
-
-            conexao.Open();
-
-            Funcionario aux = (Funcionario)funcionario;
-
-            string auxSqlFiltro = "";
-
-            if (aux.Numero > 0)
-                auxSqlFiltro = " WHERE id_funcionario = " + aux.Numero;
-
-            comando.CommandText =
-                @"SELECT
-                    ID_FUNCIONARIO AS Id,
-                    NOME AS Nome,
-                    CPF AS CPF,
-                    TELEFONE AS Telefone,
-                    MATRICULA AS Matricula,
-                    GRUPO AS Grupo
-                FROM
-                    TB_FUNCIONARIO" + auxSqlFiltro + " ORDER BY ID";
-
-            var sdr = comando.ExecuteReader();
-
-            DataTable linhas = new();
-
-            linhas.Load(sdr);
-
-            return linhas;
+            ClassLog.SalvaLog("SQL", 0, "Inserção de funcionário", comando);
         }
 
         public void EditarDBProvider(Funcionario funcionario)
@@ -165,6 +132,8 @@ namespace ProjetoPastelariaDoZe.DAO
                             ID_FUNCIONARIO = @IDFUNCIONARIO";
 
             var linhas = comando.ExecuteNonQuery();
+
+            ClassLog.SalvaLog("SQL", 0, "Edição de funcionário", comando);
         }
         public void ExcluirDBProvider(Funcionario funcionario)
         {
@@ -182,6 +151,8 @@ namespace ProjetoPastelariaDoZe.DAO
                     FROM TB_FUNCIONARIO
                     WHERE ID_FUNCIONARIO = @IDFUNCIONARIO";
             var linhas = comando.ExecuteNonQuery();
+
+            ClassLog.SalvaLog("SQL", 0, "Exclusão de funcionário", comando);
         }
 
         private static void ConfigurarParametrosInserir(Funcionario funcionario, DbCommand comando)
@@ -256,6 +227,48 @@ namespace ProjetoPastelariaDoZe.DAO
             id.ParameterName = "@IDFUNCIONARIO";
             id.Value = funcionario.Numero;
             comando.Parameters.Add(id);
+        }
+
+        public override DataTable SelectDBProvider(object funcionario)
+        {
+            using var conexao = factory!.CreateConnection(); // Conexão com o BD
+            conexao!.ConnectionString = StringConexao; // Informa a ConnectionString, o caminho para o BD
+            using var comando = factory.CreateCommand(); // Cria o comando para o BD
+            comando!.Connection = conexao; // Atribui a conexão
+
+            conexao.Open();
+
+            Funcionario aux = (Funcionario)funcionario;
+
+            string auxSqlFiltro = "";
+
+            if (aux.Numero > 0)
+                auxSqlFiltro = " WHERE id_funcionario = " + aux.Numero;
+
+            if (aux.Nome != null)
+            {
+                if (aux.Nome!.Length > 0)
+                    auxSqlFiltro = " WHERE NOME like '%" + aux.Nome + "%' ";
+            }
+
+            comando.CommandText =
+                @"SELECT
+                    ID_FUNCIONARIO AS Id,
+                    NOME AS Nome,
+                    CPF AS CPF,
+                    TELEFONE AS Telefone,
+                    MATRICULA AS Matricula,
+                    GRUPO AS Grupo
+                FROM
+                    TB_FUNCIONARIO" + auxSqlFiltro + " ORDER BY ID";
+
+            var sdr = comando.ExecuteReader();
+
+            DataTable linhas = new();
+
+            linhas.Load(sdr);
+
+            return linhas;
         }
 
         public DataTable ValidaLogin(Funcionario funcionario)

@@ -1,4 +1,5 @@
 using ProjetoPastelariaDoZe.DAO;
+using ProjetoPastelariaDoZe.DAO.Arquivamento;
 using ProjetoPastelariaDoZe.DAO.Compartilhado;
 using ProjetoPastelariaDoZe.WinFormsApp.Compartilhado;
 using System.ComponentModel;
@@ -19,6 +20,8 @@ namespace ProjetoPastelariaDoZe.WinFormsApp
         {
             InitializeComponent();
 
+            ClassLog.SalvaLog("ABERTURA");
+
             AjustarTelaLogin();
 
             Funcoes.AjustaResourcesForm(this);
@@ -37,6 +40,8 @@ namespace ProjetoPastelariaDoZe.WinFormsApp
             {
                 resources.ApplyResources(c, c.Name);
             }
+
+            dao = new();
         }
 
         private void ConfigurarAcoesBotoes()
@@ -245,6 +250,9 @@ namespace ProjetoPastelariaDoZe.WinFormsApp
             {
                 MessageBox.Show(ex.Message);
             }
+
+            buttonPesquisar.Enabled = true;
+            textBoxProcurarNome.Enabled = true;
         }
 
         private void dataGridViewDados_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -410,6 +418,89 @@ namespace ProjetoPastelariaDoZe.WinFormsApp
                     buttonProdutos.Enabled = !Program.estaLogado;
                     buttonConfiguracoes.Enabled = !Program.estaLogado;
                 }
+            }
+        }
+
+        private void buttonPesquisar_Click(object sender, EventArgs e)
+        {
+            var qtdeRows = dataGridViewDados.ColumnCount;
+
+            switch (qtdeRows)
+            {
+                case 5: // Produto
+                    Produto p = new Produto
+                    {
+                        Numero = 0
+                    };
+                    AtualizarTelaBusca(p);
+                    break;
+                case 6: //Funcionário
+                    Funcionario f = new Funcionario
+                    {
+                        Numero = 0
+                    };
+                    AtualizarTelaBusca(f);
+                    break;
+                case 7: // Cliente 
+                    Cliente c = new Cliente
+                    {
+                        Numero = 0
+                    };
+                    AtualizarTelaBusca(c);
+                    break;
+            }
+        }
+        /// <summary>
+        /// Método auxiliar
+        /// </summary>
+        /// <param name="objeto"></param>
+        public void AtualizarTelaBusca(object objeto)
+        {
+            Funcionario funcionario = new Funcionario
+            {
+                Numero = 0,
+                Nome = textBoxProcurarNome.Text
+            };
+
+            Cliente cliente = new Cliente
+            {
+                Numero = 0,
+                Nome = textBoxProcurarNome.Text
+            };
+
+            Produto produto = new Produto
+            {
+                Numero = 0,
+                Nome = textBoxProcurarNome.Text
+            };
+
+            DataTable linhas = new();
+
+            var oQueEh = objeto.GetType();
+
+            try
+            {
+                switch (oQueEh.Name)
+                {
+                    case "Funcionario":
+                        linhas = dao!.SelectDBProvider(funcionario);
+                        break;
+                    case "Cliente":
+                        linhas = dao!.SelectDBProvider(cliente);
+                        break;
+                    case "Produto":
+                        linhas = dao!.SelectDBProvider(produto);
+                        break;
+                }
+
+                dataGridViewDados.Columns.Clear();
+                dataGridViewDados.AutoGenerateColumns = true;
+                dataGridViewDados.DataSource = linhas;
+                dataGridViewDados.Refresh();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
     }

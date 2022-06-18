@@ -42,6 +42,8 @@
             this.buttonComandas = new System.Windows.Forms.Button();
             this.buttonInicio = new System.Windows.Forms.Button();
             this.panelMenuSuperior = new System.Windows.Forms.Panel();
+            this.buttonPesquisar = new System.Windows.Forms.Button();
+            this.textBoxProcurarNome = new System.Windows.Forms.TextBox();
             this.labelGroup = new System.Windows.Forms.Label();
             this.labelNome = new System.Windows.Forms.Label();
             this.labelGrupo = new System.Windows.Forms.Label();
@@ -283,6 +285,8 @@
             // panelMenuSuperior
             // 
             this.panelMenuSuperior.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.panelMenuSuperior.Controls.Add(this.buttonPesquisar);
+            this.panelMenuSuperior.Controls.Add(this.textBoxProcurarNome);
             this.panelMenuSuperior.Controls.Add(this.labelGroup);
             this.panelMenuSuperior.Controls.Add(this.labelNome);
             this.panelMenuSuperior.Controls.Add(this.labelGrupo);
@@ -291,6 +295,30 @@
             this.panelMenuSuperior.Name = "panelMenuSuperior";
             this.panelMenuSuperior.Size = new System.Drawing.Size(1098, 103);
             this.panelMenuSuperior.TabIndex = 1;
+            // 
+            // buttonPesquisar
+            // 
+            this.buttonPesquisar.BackColor = System.Drawing.Color.White;
+            this.buttonPesquisar.Enabled = false;
+            this.buttonPesquisar.FlatAppearance.BorderSize = 0;
+            this.buttonPesquisar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonPesquisar.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonPesquisar.Location = new System.Drawing.Point(249, 36);
+            this.buttonPesquisar.Name = "buttonPesquisar";
+            this.buttonPesquisar.Size = new System.Drawing.Size(92, 33);
+            this.buttonPesquisar.TabIndex = 5;
+            this.buttonPesquisar.Text = "Pesquisar";
+            this.buttonPesquisar.UseVisualStyleBackColor = false;
+            this.buttonPesquisar.Click += new System.EventHandler(this.buttonPesquisar_Click);
+            // 
+            // textBoxProcurarNome
+            // 
+            this.textBoxProcurarNome.Enabled = false;
+            this.textBoxProcurarNome.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBoxProcurarNome.Location = new System.Drawing.Point(18, 36);
+            this.textBoxProcurarNome.Name = "textBoxProcurarNome";
+            this.textBoxProcurarNome.Size = new System.Drawing.Size(225, 33);
+            this.textBoxProcurarNome.TabIndex = 4;
             // 
             // labelGroup
             // 
@@ -565,5 +593,7 @@
         private Label labelUsuario;
         private Label labelGroup;
         private Label labelNome;
+        private Button buttonPesquisar;
+        private TextBox textBoxProcurarNome;
     }
 }

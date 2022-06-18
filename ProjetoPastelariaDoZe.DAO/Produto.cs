@@ -1,4 +1,5 @@
-﻿using ProjetoPastelariaDoZe.DAO.Compartilhado;
+﻿using ProjetoPastelariaDoZe.DAO.Arquivamento;
+using ProjetoPastelariaDoZe.DAO.Compartilhado;
 using System.Data;
 using System.Data.Common;
 
@@ -60,6 +61,8 @@ namespace ProjetoPastelariaDoZe.DAO
                             )";
 
             var linhas = comando.ExecuteNonQuery();
+
+            ClassLog.SalvaLog("SQL", 0, "Inserção de produto", comando);
         }
 
         public void EditarDBProvider(Produto produto)
@@ -84,6 +87,8 @@ namespace ProjetoPastelariaDoZe.DAO
                             ID_PRODUTO = @IDPRODUTO";
 
             var linhas = comando.ExecuteNonQuery();
+
+            ClassLog.SalvaLog("SQL", 0, "Edição de produto", comando);
         }
 
         public void ExcluirDBProvider(Produto produto)
@@ -102,6 +107,8 @@ namespace ProjetoPastelariaDoZe.DAO
                     FROM TB_PRODUTO
                     WHERE ID_PRODUTO = @IDPRODUTO";
             var linhas = comando.ExecuteNonQuery();
+
+            ClassLog.SalvaLog("SQL", 0, "Exclusão de produto", comando);
         }
 
         private void ConfigurarParametrosInserir(Produto produto, DbCommand comando)
@@ -177,7 +184,13 @@ namespace ProjetoPastelariaDoZe.DAO
             string auxSqlFiltro = "";
 
             if (aux.Numero > 0)
-                auxSqlFiltro = " WHERE id_produto = " + aux.Numero;
+                auxSqlFiltro = " WHERE ID_PRODUTO = " + aux.Numero;
+
+            if (aux.Nome != null)
+            {
+                if (aux.Nome!.Length > 0)
+                    auxSqlFiltro = " WHERE NOME like '%" + aux.Nome + "%' ";
+            }
 
             comando.CommandText =
                 @"SELECT

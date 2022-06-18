@@ -5,7 +5,7 @@ namespace ProjetoPastelariaDoZe.DAO.Arquivamento
 {
     public class ClassLog
     {
-        static readonly string espacos = "     ";
+        static readonly string espacos = "  |  ";
         //Via CONTROLER
         public static void SalvaLog(string tipo, int idLogado, string log)
         {
@@ -26,6 +26,14 @@ namespace ProjetoPastelariaDoZe.DAO.Arquivamento
             auxSql += " }";
 
             arquivo.WriteLine($"{DateTime.Now}{espacos}{tipo}{espacos}{idLogado}{espacos}{log}{espacos}{auxSql}");
+            arquivo.Close();
+        }
+
+        public static void SalvaLog(string tipo)
+        {
+            TextWriter arquivo = File.AppendText(ConfigurationManager.AppSettings.Get("LocalLog")!);
+
+            arquivo.WriteLine($"{DateTime.Now}{espacos}{tipo}");
             arquivo.Close();
         }
     }

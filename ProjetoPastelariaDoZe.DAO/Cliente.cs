@@ -1,4 +1,5 @@
-﻿using ProjetoPastelariaDoZe.DAO.Compartilhado;
+﻿using ProjetoPastelariaDoZe.DAO.Arquivamento;
+using ProjetoPastelariaDoZe.DAO.Compartilhado;
 using System.Data;
 using System.Data.Common;
 
@@ -115,6 +116,8 @@ namespace ProjetoPastelariaDoZe.DAO
                             )";
 
             var linhas = comando.ExecuteNonQuery();
+
+            ClassLog.SalvaLog("SQL", 0, "Inserção de cliente", comando);
         }
 
         public void EditarDBProvider(Cliente cliente)
@@ -141,6 +144,8 @@ namespace ProjetoPastelariaDoZe.DAO
                         ID_CLIENTE = @IDCLIENTE";
 
             var linhas = comando.ExecuteNonQuery();
+
+            ClassLog.SalvaLog("SQL", 0, "Edição de cliente", comando);
         }
 
         public void ExcluirDBProvider(Cliente cliente)
@@ -159,6 +164,8 @@ namespace ProjetoPastelariaDoZe.DAO
                     FROM TB_CLIENTE
                     WHERE ID_CLIENTE = @IDCLIENTE";
             var linhas = comando.ExecuteNonQuery();
+
+            ClassLog.SalvaLog("SQL", 0, "Exclusão de cliente", comando);
         }
 
         private void ConfigurarParametrosExcluir(Cliente cliente, DbCommand comando)
@@ -184,6 +191,12 @@ namespace ProjetoPastelariaDoZe.DAO
 
             if (aux.Numero > 0)
                 auxSqlFiltro = " WHERE id_cliente = " + aux.Numero;
+
+            if (aux.Nome != null)
+            {
+                if (aux.Nome!.Length > 0)
+                    auxSqlFiltro = " WHERE NOME like '%" + aux.Nome + "%' ";
+            }
 
             comando.CommandText =
                 @"SELECT

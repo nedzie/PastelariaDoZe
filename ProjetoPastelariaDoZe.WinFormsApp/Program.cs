@@ -1,3 +1,4 @@
+using ProjetoPastelariaDoZe.DAO.Arquivamento;
 using ProjetoPastelariaDoZe.WinFormsApp.Compartilhado;
 using System.Configuration;
 using System.Data.Common;
@@ -24,6 +25,8 @@ namespace ProjetoPastelariaDoZe.WinFormsApp
             ApplicationConfiguration.Initialize();
             Funcoes.ValidaConexaoDB();
             Application.Run(new FormInicio());
+
+            ClassLog.SalvaLog("FECHAMENTO");
         }
 
         private static void ConfigurarConexao()
