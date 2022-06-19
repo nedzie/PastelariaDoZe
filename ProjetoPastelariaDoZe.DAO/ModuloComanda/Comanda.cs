@@ -105,6 +105,62 @@ namespace ProjetoPastelariaDoZe.DAO.ModuloComanda
             }
         }
 
+        public void AddItem(ComandaProdutos comandaProdutos)
+        {
+            using var conexao = factory!.CreateConnection(); //Cria conexão
+            conexao!.ConnectionString = StringConexao; //Atribui a string de conexão
+            using var comando = factory.CreateCommand(); //Cria comando
+            comando!.Connection = conexao; //Atribui conexão
+
+            var idComanda = comando.CreateParameter();
+            idComanda.ParameterName = "@IDCOMANDA";
+            idComanda.Value = comandaProdutos.IdComanda;
+            comando.Parameters.Add(idComanda);
+
+            var idProduto = comando.CreateParameter();
+            idProduto.ParameterName = "@IDPRODUTO";
+            idProduto.Value = comandaProdutos.IdProduto;
+            comando.Parameters.Add(idProduto);
+
+            var quantidade = comando.CreateParameter();
+            quantidade.ParameterName = "@QUANTIDADE";
+            quantidade.Value = comandaProdutos.Quantidade;
+            comando.Parameters.Add(quantidade);
+
+            var valorUnitario = comando.CreateParameter();
+            valorUnitario.ParameterName = "@VALORUNITARIO";
+            valorUnitario.Value = comandaProdutos.ValorUnitario;
+            comando.Parameters.Add(valorUnitario);
+
+            var idFuncionario = comando.CreateParameter();
+            idFuncionario.ParameterName = "@IDFUNCIONARIO";
+            idFuncionario.Value = comandaProdutos.IdFuncionario;
+            comando.Parameters.Add(idFuncionario);
+
+            conexao.Open();
+
+            comando.CommandText =
+            @"INSERT INTO 
+                TB_COMANDA_PRODUTO
+                    (
+                        COMANDA_ID, 
+                        PRODUTO_ID, 
+                        QUANTIDADE, 
+                        VALOR_UNITARIO, 
+                        FUNCIONARIO_ID
+                    )
+                VALUES 
+                    (
+                        @IDCOMANDA, 
+                        @IDPRODUTO, 
+                        @QUANTIDADE, 
+                        @VALORUNITARIO, 
+                        @IDFUNCIONARIO
+                    )";
+
+            var linhas = comando.ExecuteNonQuery();
+        }
+
         public DataTable ListarComandas(Comanda comanda)
         {
             using var conexao = factory!.CreateConnection(); //Cria conexão
@@ -134,6 +190,63 @@ namespace ProjetoPastelariaDoZe.DAO.ModuloComanda
             linhas.Load(sdr);
 
             return linhas;
+        }
+
+        public DataTable ListaItensComanda(ComandaProdutos comandaProdutos)
+        {
+            using var conexao = factory.CreateConnection(); //Cria conexão
+            conexao!.ConnectionString = StringConexao; //Atribui a string de conexão
+            using var comando = factory.CreateCommand(); //Cria comando
+            comando!.Connection = conexao; //Atribui conexão
+                                           //Adiciona parâmetros (@campo e valor)
+            var idComanda = comando.CreateParameter();
+            idComanda.ParameterName = "@idComanda";
+            idComanda.Value = comandaProdutos.IdComanda;
+            comando.Parameters.Add(idComanda);
+            conexao.Open();
+            comando.CommandText =
+            @"SELECT 
+                CP.ID_COMANDA_PRODUTO AS ID, 
+
+                P.NOME AS NOME, 
+
+                CP.QUANTIDADE AS QUANTIDADE,
+                CP.VALOR_UNITARIO AS UNITÁRIO, 
+
+                F.NOME AS FUNCIONÁRIO
+            FROM TB_COMANDA_PRODUTO CP
+                INNER JOIN TB_PRODUTO P ON CP.PRODUTO_ID = P.ID_PRODUTO
+                INNER JOIN TB_FUNCIONARIO F ON CP.FUNCIONARIO_ID = F.ID_FUNCIONARIO
+            WHERE 
+                CP.COMANDA_ID = @IDCOMANDA;";
+
+            var sdr = comando.ExecuteReader();
+
+            DataTable linhas = new();
+            linhas.Load(sdr);
+            return linhas;
+        }
+    }
+
+    public class ComandaProdutos
+    {
+        public int IdComandaProduto { get; set; }
+        public int IdComanda { get; set; }
+        public int IdProduto { get; set; }
+        public int Quantidade { get; set; }
+        public double ValorUnitario { get; set; }
+        public int IdFuncionario { get; set; }
+
+        public ComandaProdutos(int idComandaProduto = 0, int idComanda = 0, int
+        idProduto = 0, int quantidade = 0, double valorUnitario = 0, int idFuncionario
+        = 0)
+        {
+            IdComandaProduto = idComandaProduto;
+            IdComanda = idComanda;
+            IdProduto = idProduto;
+            Quantidade = quantidade;
+            ValorUnitario = valorUnitario;
+            IdFuncionario = idFuncionario;
         }
     }
 }

@@ -140,6 +140,7 @@
             this.dataGridViewComandasAbertas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewComandasAbertas.Size = new System.Drawing.Size(745, 251);
             this.dataGridViewComandasAbertas.TabIndex = 0;
+            this.dataGridViewComandasAbertas.SelectionChanged += new System.EventHandler(this.dataGridViewComandasAbertas_SelectionChanged);
             // 
             // panelProdutos
             // 
@@ -183,7 +184,7 @@
             this.groupBoxProdutos.Size = new System.Drawing.Size(725, 682);
             this.groupBoxProdutos.TabIndex = 8;
             this.groupBoxProdutos.TabStop = false;
-            this.groupBoxProdutos.Text = "Produtos (Duplo clique para adicionar à comanda)";
+            this.groupBoxProdutos.Text = "Produtos (Duplo clique para adicionar à comanda selecionada)";
             // 
             // dataGridViewProdutos
             // 
@@ -200,6 +201,7 @@
             this.dataGridViewProdutos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewProdutos.Size = new System.Drawing.Size(716, 570);
             this.dataGridViewProdutos.TabIndex = 2;
+            this.dataGridViewProdutos.DoubleClick += new System.EventHandler(this.dataGridViewProdutos_DoubleClick);
             // 
             // panelAbrirComanda
             // 
