@@ -22,7 +22,10 @@ namespace ProjetoPastelariaDoZe.WinFormsApp
             this.KeyDown += new KeyEventHandler(Funcoes.FormEventoKeyDown!);
             this.Text = Properties.Resources.ResourceManager.GetString("formComandas.Text");
             ConfigurarUserControl();
+            ConfigurarDAO();
             AtualizarTelaAreaComandas();
+
+            this.Load += buttonPesquisar_Click!;
         }
 
         private void ConfigurarUserControl()
@@ -32,8 +35,6 @@ namespace ProjetoPastelariaDoZe.WinFormsApp
             Size = new(Size.Width, Size.Height + opcoes.Size.Height);
             this.Controls.Add(opcoes);
             opcoes.buttonSair.Click += ButtonSair_Click;
-
-            ConfigurarDAO();
         }
 
         private void ConfigurarDAO()
@@ -62,14 +63,10 @@ namespace ProjetoPastelariaDoZe.WinFormsApp
             try
             {
                 if (!dao!.AbreNovaComanda(comanda))
-                {
                     MessageBox.Show("ERRO!!! Comanda " + textBoxNumeroComanda.Text + " já esta aberta!!!");
-                }
                 else
-                {
                     MessageBox.Show("Comanda aberta com sucesso!");
                     AtualizarTelaAreaComandas();
-                }
             }
             catch (Exception ex)
             {
@@ -127,9 +124,8 @@ namespace ProjetoPastelariaDoZe.WinFormsApp
             };
             try
             {
-                //chama o método para buscar todos os dados da nossa camada model
                 DataTable linhas = cdao!.SelectDBProvider(produto);
-                // seta o datasouce do dataGridView com os dados retornados
+
                 dataGridViewProdutos.Columns.Clear();
                 dataGridViewProdutos.AutoGenerateColumns = true;
                 dataGridViewProdutos.DataSource = linhas;

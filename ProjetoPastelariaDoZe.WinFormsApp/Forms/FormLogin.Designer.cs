@@ -37,7 +37,7 @@
             this.textBoxSenha = new System.Windows.Forms.TextBox();
             this.textBoxNome = new System.Windows.Forms.TextBox();
             this.labelSenha = new System.Windows.Forms.Label();
-            this.labelNome = new System.Windows.Forms.Label();
+            this.labelCPF = new System.Windows.Forms.Label();
             this.labelLogin = new System.Windows.Forms.Label();
             this.panelFundoLogin.SuspendLayout();
             this.SuspendLayout();
@@ -48,7 +48,7 @@
             this.panelFundoLogin.Controls.Add(this.textBoxSenha);
             this.panelFundoLogin.Controls.Add(this.textBoxNome);
             this.panelFundoLogin.Controls.Add(this.labelSenha);
-            this.panelFundoLogin.Controls.Add(this.labelNome);
+            this.panelFundoLogin.Controls.Add(this.labelCPF);
             this.panelFundoLogin.Controls.Add(this.labelLogin);
             this.panelFundoLogin.Location = new System.Drawing.Point(12, 12);
             this.panelFundoLogin.Name = "panelFundoLogin";
@@ -101,15 +101,15 @@
             this.labelSenha.TabIndex = 2;
             this.labelSenha.Text = "Senha";
             // 
-            // labelNome
+            // labelCPF
             // 
-            this.labelNome.AutoSize = true;
-            this.labelNome.ForeColor = System.Drawing.Color.White;
-            this.labelNome.Location = new System.Drawing.Point(87, 65);
-            this.labelNome.Name = "labelNome";
-            this.labelNome.Size = new System.Drawing.Size(28, 15);
-            this.labelNome.TabIndex = 1;
-            this.labelNome.Text = "CPF";
+            this.labelCPF.AutoSize = true;
+            this.labelCPF.ForeColor = System.Drawing.Color.White;
+            this.labelCPF.Location = new System.Drawing.Point(87, 65);
+            this.labelCPF.Name = "labelCPF";
+            this.labelCPF.Size = new System.Drawing.Size(28, 15);
+            this.labelCPF.TabIndex = 1;
+            this.labelCPF.Text = "CPF";
             // 
             // labelLogin
             // 
@@ -148,7 +148,7 @@
         private TextBox textBoxSenha;
         private TextBox textBoxNome;
         private Label labelSenha;
-        private Label labelNome;
+        private Label labelCPF;
         private Label labelLogin;
     }
 }
