@@ -104,6 +104,7 @@
             this.dataGridViewItensComanda.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewItensComanda.Size = new System.Drawing.Size(742, 268);
             this.dataGridViewItensComanda.TabIndex = 1;
+            this.dataGridViewItensComanda.DoubleClick += new System.EventHandler(this.dataGridViewItensComanda_DoubleClick);
             // 
             // panelComandasAbertas
             // 

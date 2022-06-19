@@ -161,6 +161,49 @@ namespace ProjetoPastelariaDoZe.DAO.ModuloComanda
             var linhas = comando.ExecuteNonQuery();
         }
 
+        public void EditarItemComanda(ComandaProdutos comandaProdutos)
+        {
+            using var conexao = factory!.CreateConnection(); //Cria conexão
+            conexao!.ConnectionString = StringConexao; //Atribui a string de conexão
+            using var comando = factory.CreateCommand(); //Cria comando
+            comando!.Connection = conexao; //Atribui conexão
+                                           //Adiciona parâmetros (@campo e valor)
+            var idComandaProduto = comando.CreateParameter();
+            idComandaProduto.ParameterName = "@idComandaProduto";
+            idComandaProduto.Value = comandaProdutos.IdComandaProduto;
+            comando.Parameters.Add(idComandaProduto);
+
+            var quantidade = comando.CreateParameter();
+            quantidade.ParameterName = "@quantidade";
+            quantidade.Value = comandaProdutos.Quantidade;
+            comando.Parameters.Add(quantidade);
+
+            var idFuncionario = comando.CreateParameter();
+            idFuncionario.ParameterName = "@idFuncionario";
+            idFuncionario.Value = comandaProdutos.IdFuncionario;
+            comando.Parameters.Add(idFuncionario);
+
+            conexao.Open();
+
+            if (comandaProdutos.Quantidade == 0)
+                comando.CommandText = 
+                    @"DELETE FROM 
+                        TB_COMANDA_PRODUTO 
+                    WHERE 
+                        ID_COMANDA_PRODUTO = @IDCOMANDAPRODUTO";
+            else
+                comando.CommandText = 
+                    @"UPDATE 
+                        TB_COMANDA_PRODUTO 
+                    SET 
+                        QUANTIDADE = @QUANTIDADE, 
+                        FUNCIONARIO_ID = @IDFUNCIONARIO 
+                    WHERE
+                        ID_COMANDA_PRODUTO = @IDCOMANDAPRODUTO";
+
+            var linhas = comando.ExecuteNonQuery();
+        }
+
         public DataTable ListarComandas(Comanda comanda)
         {
             using var conexao = factory!.CreateConnection(); //Cria conexão
@@ -194,7 +237,7 @@ namespace ProjetoPastelariaDoZe.DAO.ModuloComanda
 
         public DataTable ListaItensComanda(ComandaProdutos comandaProdutos)
         {
-            using var conexao = factory.CreateConnection(); //Cria conexão
+            using var conexao = factory!.CreateConnection(); //Cria conexão
             conexao!.ConnectionString = StringConexao; //Atribui a string de conexão
             using var comando = factory.CreateCommand(); //Cria comando
             comando!.Connection = conexao; //Atribui conexão
