@@ -129,6 +129,7 @@
             this.buttonCaixa.TabIndex = 2;
             this.buttonCaixa.Text = "Caixa";
             this.buttonCaixa.UseVisualStyleBackColor = false;
+            this.buttonCaixa.Click += new System.EventHandler(this.buttonCaixa_Click);
             // 
             // buttonLogin
             // 

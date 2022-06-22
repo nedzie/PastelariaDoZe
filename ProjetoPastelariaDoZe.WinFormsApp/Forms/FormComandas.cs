@@ -164,6 +164,7 @@ namespace ProjetoPastelariaDoZe.WinFormsApp
                     try
                     {
                         dao!.AddItem(comandaProdutos);
+                        AtualizarTelaItensComanda(comandaProdutos.IdComanda);
                     }
                     catch (Exception ex)
                     {

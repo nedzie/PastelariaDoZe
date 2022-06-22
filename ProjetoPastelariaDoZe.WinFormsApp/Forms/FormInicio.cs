@@ -4,6 +4,7 @@ using ProjetoPastelariaDoZe.DAO.ModuloCliente;
 using ProjetoPastelariaDoZe.DAO.ModuloFuncionario;
 using ProjetoPastelariaDoZe.DAO.ModuloProduto;
 using ProjetoPastelariaDoZe.WinFormsApp.Compartilhado;
+using ProjetoPastelariaDoZe.WinFormsApp.Forms;
 using System.ComponentModel;
 using System.Data;
 
@@ -97,6 +98,11 @@ namespace ProjetoPastelariaDoZe.WinFormsApp
             };
             login.ShowDialog(); // Modal
             AjustarTelaLogin();
+        }
+        private void buttonCaixa_Click(object sender, EventArgs e)
+        {
+            FormCaixa caixa = new();
+            caixa.ShowDialog();
         }
 
         private void buttonFuncionarios_Click(object sender, EventArgs e)
@@ -507,5 +513,7 @@ namespace ProjetoPastelariaDoZe.WinFormsApp
                 MessageBox.Show(ex.Message);
             }
         }
+
+        
     }
 }
